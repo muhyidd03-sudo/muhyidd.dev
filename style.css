@@ -701,3 +701,61 @@ html{scroll-padding-top:90px}
 @media(prefers-reduced-motion:reduce){
   .showcase-card,.showcase-info.showcase-copy-in{transition:none!important;animation:none!important}
 }
+
+/* V40 — mobile Work Gallery refinement */
+@media (max-width: 520px){
+  .work-gallery-section{min-height:720px}
+  .work-gallery-inner{padding-left:20px;padding-right:20px}
+  .work-gallery-heading{gap:16px}
+  .work-gallery-heading h2{font-size:clamp(44px,13vw,58px);line-height:.9}
+  .work-gallery-heading p{font-size:12px;line-height:1.75;max-width:310px}
+  .work-gallery-more{padding:13px 16px;font-size:9px;white-space:nowrap}
+
+  .showcase-carousel{
+    height:285px;
+    margin-top:34px;
+    margin-left:-20px;
+    margin-right:-20px;
+    overflow:visible;
+  }
+  .showcase-track{overflow:visible}
+  .showcase-card{
+    width:calc(100vw - 44px);
+    max-width:360px;
+    border-radius:18px;
+  }
+  .showcase-pos-center{
+    transform:translate3d(-50%,-50%,30px) scale(1.0);
+  }
+  .showcase-pos-near-left{
+    transform:translate3d(calc(-50% - 145px),-50%,0) rotateY(5deg) scale(.52);
+    opacity:.72;
+  }
+  .showcase-pos-near-right{
+    transform:translate3d(calc(-50% + 145px),-50%,0) rotateY(-5deg) scale(.52);
+    opacity:.72;
+  }
+  .showcase-pos-far-left,.showcase-pos-far-right{display:none}
+  .showcase-pos-off-left,.showcase-pos-off-right{
+    opacity:0;
+    pointer-events:none;
+  }
+
+  .showcase-info{margin-top:8px;padding:0 6px}
+  .showcase-info>small{font-size:8px}
+  .showcase-info h3{font-size:clamp(25px,7vw,31px);margin-top:10px}
+  .showcase-info p{font-size:11px;line-height:1.7;max-width:330px}
+  .showcase-tags{margin-top:14px;gap:7px}
+  .showcase-tags span{font-size:8px;padding:6px 9px}
+  .showcase-view{
+    margin:22px auto 0;
+    padding:12px 20px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--paper);
+    font-size:10px;
+    gap:10px;
+    box-shadow:0 8px 20px rgba(20,30,40,.06);
+  }
+  .showcase-view span{font-size:13px}
+}
