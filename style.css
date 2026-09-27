@@ -704,36 +704,37 @@ html{scroll-padding-top:90px}
 
 /* V40 — mobile Work Gallery refinement */
 @media (max-width: 520px){
-  .work-gallery-section{min-height:720px}
-  .work-gallery-inner{padding-left:20px;padding-right:20px}
+  .work-gallery-section{min-height:760px}
+  .work-gallery-inner{padding-left:16px;padding-right:16px}
   .work-gallery-heading{gap:16px}
   .work-gallery-heading h2{font-size:clamp(44px,13vw,58px);line-height:.9}
   .work-gallery-heading p{font-size:12px;line-height:1.75;max-width:310px}
   .work-gallery-more{padding:13px 16px;font-size:9px;white-space:nowrap}
 
+  /* V42 — mobile gallery: main project almost full width, with tiny side previews */
   .showcase-carousel{
-    height:285px;
+    height:clamp(240px,60vw,410px);
     margin-top:34px;
-    margin-left:-20px;
-    margin-right:-20px;
+    margin-left:-16px;
+    margin-right:-16px;
     overflow:visible;
   }
   .showcase-track{overflow:visible}
   .showcase-card{
-    width:calc(100vw - 44px);
-    max-width:360px;
+    width:calc(100vw - 28px);
+    max-width:none;
     border-radius:18px;
   }
   .showcase-pos-center{
-    transform:translate3d(-50%,-50%,30px) scale(1.0);
+    transform:translate3d(-50%,-50%,30px) scale(1);
   }
   .showcase-pos-near-left{
-    transform:translate3d(calc(-50% - 145px),-50%,0) rotateY(5deg) scale(.52);
-    opacity:.72;
+    transform:translate3d(calc(-50% - (50vw - 10px)),-50%,0) rotateY(5deg) scale(.36);
+    opacity:.66;
   }
   .showcase-pos-near-right{
-    transform:translate3d(calc(-50% + 145px),-50%,0) rotateY(-5deg) scale(.52);
-    opacity:.72;
+    transform:translate3d(calc(-50% + (50vw - 10px)),-50%,0) rotateY(-5deg) scale(.36);
+    opacity:.66;
   }
   .showcase-pos-far-left,.showcase-pos-far-right{display:none}
   .showcase-pos-off-left,.showcase-pos-off-right{
@@ -741,10 +742,10 @@ html{scroll-padding-top:90px}
     pointer-events:none;
   }
 
-  .showcase-info{margin-top:8px;padding:0 6px}
+  .showcase-info{margin-top:10px;padding:0 6px}
   .showcase-info>small{font-size:8px}
   .showcase-info h3{font-size:clamp(25px,7vw,31px);margin-top:10px}
-  .showcase-info p{font-size:11px;line-height:1.7;max-width:330px}
+  .showcase-info p{font-size:11px;line-height:1.7;max-width:340px}
   .showcase-tags{margin-top:14px;gap:7px}
   .showcase-tags span{font-size:8px;padding:6px 9px}
   .showcase-view{
