@@ -721,7 +721,7 @@ html{scroll-padding-top:90px}
   }
   .showcase-track{overflow:visible}
   .showcase-card{
-    width:calc(100vw - 84px);
+    width:calc(100vw - 74px);
     max-width:none;
     border-radius:18px;
   }
