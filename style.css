@@ -721,7 +721,7 @@ html{scroll-padding-top:90px}
   }
   .showcase-track{overflow:visible}
   .showcase-card{
-    width:calc(100vw - 28px);
+    width:calc(100vw - 84px);
     max-width:none;
     border-radius:18px;
   }
@@ -729,11 +729,11 @@ html{scroll-padding-top:90px}
     transform:translate3d(-50%,-50%,30px) scale(1.04);
   }
   .showcase-pos-near-left{
-    transform:translate3d(calc(-50% - (50vw - 10px)),-50%,0) rotateY(5deg) scale(.36);
+    transform:translate3d(calc(-50% - (50vw - 20px)),-50%,0) rotateY(5deg) scale(.36);
     opacity:.66;
   }
   .showcase-pos-near-right{
-    transform:translate3d(calc(-50% + (50vw - 10px)),-50%,0) rotateY(-5deg) scale(.36);
+    transform:translate3d(calc(-50% + (50vw - 20px)),-50%,0) rotateY(-5deg) scale(.36);
     opacity:.66;
   }
   .showcase-pos-far-left,.showcase-pos-far-right{display:none}
