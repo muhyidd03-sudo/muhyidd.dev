@@ -554,9 +554,9 @@ html{scroll-padding-top:90px}
 /* ===== V29 SELECTED WORK — VIDEO-MATCHED MOTION ===== */
 .showcase-carousel{
   position:relative;
-  height:390px;
-  margin:44px auto 0;
-  max-width:1320px;
+  height:450px;
+  margin:50px auto 0;
+  max-width:1440px;
   overflow:visible;
   perspective:1500px;
   perspective-origin:50% 48%;
@@ -571,7 +571,7 @@ html{scroll-padding-top:90px}
   position:absolute;
   left:50%;
   top:50%;
-  width:390px;
+  width:500px;
   aspect-ratio:16/9;
   padding:0;
   border:1px solid rgba(20,40,50,.10);
@@ -595,35 +595,35 @@ html{scroll-padding-top:90px}
 /* The reference behaves like one horizontal 3D conveyor:
    far → near → CENTER → near → far. */
 .showcase-pos-center{
-  transform:translate3d(-50%,-50%,105px) scale(1.20);
+  transform:translate3d(-50%,-50%,110px) scale(1.18);
   opacity:1;
   filter:none;
   z-index:5;
   box-shadow:0 38px 82px rgba(20,40,50,.20);
 }
 .showcase-pos-near-left{
-  transform:translate3d(calc(-50% - 318px),-50%,28px) rotateY(9deg) scale(.82);
+  transform:translate3d(calc(-50% - 390px),-50%,28px) rotateY(9deg) scale(.82);
   opacity:.82;
   filter:saturate(.92) brightness(.97);
   z-index:4;
   box-shadow:0 24px 55px rgba(20,40,50,.13);
 }
 .showcase-pos-near-right{
-  transform:translate3d(calc(-50% + 318px),-50%,28px) rotateY(-9deg) scale(.82);
+  transform:translate3d(calc(-50% + 390px),-50%,28px) rotateY(-9deg) scale(.82);
   opacity:.82;
   filter:saturate(.92) brightness(.97);
   z-index:4;
   box-shadow:0 24px 55px rgba(20,40,50,.13);
 }
 .showcase-pos-far-left{
-  transform:translate3d(calc(-50% - 520px),-50%,-70px) rotateY(15deg) scale(.58);
+  transform:translate3d(calc(-50% - 640px),-50%,-70px) rotateY(15deg) scale(.58);
   opacity:.48;
   filter:saturate(.72) brightness(.91);
   z-index:2;
   box-shadow:0 14px 35px rgba(20,40,50,.08);
 }
 .showcase-pos-far-right{
-  transform:translate3d(calc(-50% + 520px),-50%,-70px) rotateY(-15deg) scale(.58);
+  transform:translate3d(calc(-50% + 640px),-50%,-70px) rotateY(-15deg) scale(.58);
   opacity:.48;
   filter:saturate(.72) brightness(.91);
   z-index:2;
@@ -633,14 +633,14 @@ html{scroll-padding-top:90px}
    Without these two states, a card temporarily loses its transform and
    falls back to the browser's default position while crossing the track. */
 .showcase-pos-off-left{
-  transform:translate3d(calc(-50% - 735px),-50%,-120px) rotateY(19deg) scale(.46);
+  transform:translate3d(calc(-50% - 860px),-50%,-120px) rotateY(19deg) scale(.46);
   opacity:0;
   filter:saturate(.65) brightness(.88);
   z-index:1;
   pointer-events:none;
 }
 .showcase-pos-off-right{
-  transform:translate3d(calc(-50% + 735px),-50%,-120px) rotateY(-19deg) scale(.46);
+  transform:translate3d(calc(-50% + 860px),-50%,-120px) rotateY(-19deg) scale(.46);
   opacity:0;
   filter:saturate(.65) brightness(.88);
   z-index:1;
@@ -666,15 +666,15 @@ html{scroll-padding-top:90px}
 .dark-mode .showcase-info h3,.dark-mode .showcase-view,.dark-mode .showcase-count span:first-child{color:#f7f8f9}
 
 @media(max-width:1100px){
-  .showcase-carousel{height:355px}
-  .showcase-card{width:350px}
-  .showcase-pos-center{transform:translate3d(-50%,-50%,85px) scale(1.17)}
-  .showcase-pos-near-left{transform:translate3d(calc(-50% - 285px),-50%,20px) rotateY(8deg) scale(.78)}
-  .showcase-pos-near-right{transform:translate3d(calc(-50% + 285px),-50%,20px) rotateY(-8deg) scale(.78)}
-  .showcase-pos-far-left{transform:translate3d(calc(-50% - 465px),-50%,-65px) rotateY(14deg) scale(.54)}
-  .showcase-pos-far-right{transform:translate3d(calc(-50% + 465px),-50%,-65px) rotateY(-14deg) scale(.54)}
-  .showcase-pos-off-left{transform:translate3d(calc(-50% - 650px),-50%,-100px) rotateY(18deg) scale(.44)}
-  .showcase-pos-off-right{transform:translate3d(calc(-50% + 650px),-50%,-100px) rotateY(-18deg) scale(.44)}
+  .showcase-carousel{height:405px}
+  .showcase-card{width:450px}
+  .showcase-pos-center{transform:translate3d(-50%,-50%,95px) scale(1.16)}
+  .showcase-pos-near-left{transform:translate3d(calc(-50% - 350px),-50%,20px) rotateY(8deg) scale(.78)}
+  .showcase-pos-near-right{transform:translate3d(calc(-50% + 350px),-50%,20px) rotateY(-8deg) scale(.78)}
+  .showcase-pos-far-left{transform:translate3d(calc(-50% - 560px),-50%,-65px) rotateY(14deg) scale(.54)}
+  .showcase-pos-far-right{transform:translate3d(calc(-50% + 560px),-50%,-65px) rotateY(-14deg) scale(.54)}
+  .showcase-pos-off-left{transform:translate3d(calc(-50% - 760px),-50%,-100px) rotateY(18deg) scale(.44)}
+  .showcase-pos-off-right{transform:translate3d(calc(-50% + 760px),-50%,-100px) rotateY(-18deg) scale(.44)}
   .showcase-photo-prev{left:calc(50% - 225px)}
   .showcase-photo-next{right:calc(50% - 225px)}
 }
