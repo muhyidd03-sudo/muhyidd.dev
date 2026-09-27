@@ -19,6 +19,32 @@ navItems.forEach(a=>a.addEventListener('click',()=>{
   navMenu?.classList.remove('open');
 }));
 
+// V19: make all internal anchor buttons/links scroll reliably on every device.
+const scrollToSection = (id, updateUrl = true) => {
+  const target = document.getElementById(id);
+  if (!target) return false;
+  const navHeight = navWrap?.getBoundingClientRect().height || 0;
+  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - navHeight - 12);
+  window.scrollTo({ top, behavior: 'smooth' });
+  if (updateUrl) history.replaceState(null, '', `#${id}`);
+  return true;
+};
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const id=link.getAttribute('href')?.slice(1);
+    if(!id) return;
+    if(scrollToSection(id)) e.preventDefault();
+  });
+});
+
+document.querySelectorAll('.hero-scroll[data-scroll-target]').forEach(button=>{
+  button.addEventListener('click',e=>{
+    const id=button.dataset.scrollTarget;
+    if(scrollToSection(id)) e.preventDefault();
+  });
+});
+
 const savedTheme=localStorage.getItem('muhyiddin-theme');
 if(savedTheme==='dark') body.classList.add('dark-mode');
 themeBtn?.addEventListener('click',()=>{

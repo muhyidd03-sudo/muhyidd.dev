@@ -439,3 +439,24 @@ img{max-width:100%;height:auto}button,a{touch-action:manipulation}.nav-item,.foo
   .footer-statement strong{font-size:36px}
   .footer-links a{padding:0 13px}
 }
+
+
+/* V19 — clean handwritten personal brand + reliable anchor navigation */
+html { scroll-padding-top: 92px; }
+section[id] { scroll-margin-top: 92px; }
+.logo { gap: 0; }
+.logo b {
+  font-family: "Caveat", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1;
+}
+.dark-logo b { font-size: 2.15rem; }
+@media (max-width:700px){ .logo b { font-size: 1.85rem; } .dark-logo b { font-size: 2rem; } }
+
+
+/* V20: hero CTA links are always clickable */
+.hero-actions { position: relative; z-index: 20; }
+.hero-actions .pill { position: relative; z-index: 21; cursor: pointer; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
