@@ -19,7 +19,7 @@
     <a class="logo" href="#home" aria-label="Muhyiddin home"><b>Muhyiddin</b></a>
     <button class="menu-btn" aria-label="Buka menu" aria-expanded="false"><i></i><i></i></button>
     <div class="nav-menu">
-      <a class="nav-item active" href="#home">Home</a><a class="nav-item" href="#about">About</a><a class="nav-item" href="#work">Work</a><a class="nav-item" href="#skills">Skills</a><a class="nav-item" href="#journey">Journey</a><a class="nav-item" href="#contact">Contact</a>
+      <a class="nav-item active" href="#home">Home</a><a class="nav-item" href="#about">About</a><a class="nav-item" href="#work">Work</a><a class="nav-item" href="#skills">Skills</a><a class="nav-item" href="#journey">Journey</a><a class="nav-item" href="#certificates">Certificates</a><a class="nav-item" href="#contact">Contact</a>
       <button class="theme-btn" aria-label="Ganti tema">◐</button>
     </div>
   </nav>
@@ -39,7 +39,7 @@
       <div class="hero-art reveal delay-2">
         <div class="art-card" data-tilt>
           <div class="art-top"><span>MUHYIDDIN</span><span>01—06</span></div>
-          <div class="art-center"><div class="orbit o1"></div><div class="orbit o2"></div><div class="portrait"><img src="assets/profile.png" alt="Foto Muhyiddin"></div><div class="chip chip-1">WEB<br><b>DEVELOPER</b></div><div class="chip chip-2">BASED IN<br><b>INDONESIA</b></div></div>
+          <div class="art-center"><div class="orbit o1"></div><div class="orbit o2"></div><div class="portrait"><img src="assets/profile.webp" alt="Foto Muhyiddin"></div><div class="chip chip-1">WEB<br><b>DEVELOPER</b></div><div class="chip chip-2">BASED IN<br><b>INDONESIA</b></div></div>
           <div class="art-bottom"><span>HTML · CSS · JS</span><b>SCROLL ↘</b></div>
         </div>
       </div>
@@ -63,13 +63,29 @@
  </div>
 </section>
 
-<section class="section soft" id="work">
- <div class="section-inner">
-  <div class="section-head split reveal"><div><small>02 / SELECTED WORK</small><h2>Things I've<br><em>been building.</em></h2></div><p>Project yang saya buat untuk belajar, bereksperimen, dan menyelesaikan masalah nyata.</p></div>
-  <div class="work-grid">
-   <article class="work-card large reveal" data-project="pos"><div class="work-image blue-ui real-shot"><img src="assets/kasir-screenshot.webp" alt="Screenshot Sistem Kasir Toko Kitab Pondok di Excel" loading="lazy"></div><div class="work-info"><div><small>01 / SYSTEM</small><h3>Sistem Kasir Toko Kitab Pondok</h3><p>Sistem kasir berbasis Excel VBA untuk transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.</p><div class="tags"><span>VBA</span><span>Excel</span><span>Database</span></div></div><button class="open-project" aria-label="Lihat detail Sistem Kasir Toko Kitab">↗</button></div></article>
-   <article class="work-card reveal" data-project="portfolio"><div class="work-image real-web-shot"><div class="real-mini-frame"><div class="mini-top"><span></span><span></span><span></span><b>Personal Portfolio</b></div><img src="assets/portfolio-screenshot.webp" alt="Screenshot asli Personal Portfolio Muhyiddin" loading="lazy"></div></div><div class="work-info"><div><small>02 / WEB</small><h3>Personal Portfolio</h3><p>Portfolio responsive dengan visual minimal, animasi halus, dan interaksi modern.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div><button class="open-project" aria-label="Lihat detail Personal Portfolio">↗</button></div></article>
-   <article class="work-card reveal" data-project="dicoding"><div class="work-image real-dicoding-shot"><img src="assets/dicoding-screenshot.webp" alt="Screenshot asli Dicoding Web Project Muhyiddin" loading="lazy"></div><div class="work-info"><div><small>03 / LEARNING</small><h3>Dicoding Web Project</h3><p>Project latihan semantic HTML, CSS layout, responsive design, dan dasar JavaScript.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div></div><button class="open-project" aria-label="Lihat detail Dicoding Web Project">↗</button></div></article>
+<section class="section work-gallery-section" id="work">
+ <div class="section-inner work-gallery-inner">
+  <div class="work-gallery-heading reveal">
+    <div>
+      <small>02 / SELECTED WORK</small>
+      <h2>Work Gallery</h2>
+      <p>A collection of systems, digital projects, and technical work that I have built while learning and experimenting.</p>
+    </div>
+    <a class="work-gallery-more" href="#contact">View More Projects <span>↗</span></a>
+  </div>
+
+  <div class="showcase-carousel reveal" aria-label="Selected work gallery">
+    <div class="showcase-track" id="showcase-track"></div>
+    <div class="showcase-fade showcase-fade-left"></div>
+    <div class="showcase-fade showcase-fade-right"></div>
+  </div>
+
+  <div class="showcase-info reveal">
+    <small id="showcase-tag">01 / SYSTEM</small>
+    <h3 id="showcase-title">Sistem Kasir Toko Kitab Pondok</h3>
+    <p id="showcase-desc">Sistem kasir berbasis Excel VBA untuk transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.</p>
+    <div class="showcase-tags" id="showcase-tags"></div>
+    <button class="showcase-view open-project" type="button" data-project-target="pos">View project <span>↗</span></button>
   </div>
 
  </div>
@@ -93,7 +109,7 @@
  <div class="section-inner">
   <div class="section-head split reveal"><div><small>04 / JOURNEY</small><h2>Learning by<br><em>building.</em></h2></div><p>Perjalanan belajar saya dibangun sedikit demi sedikit melalui materi, eksperimen, dan project yang benar-benar dikerjakan.</p></div>
   <div class="timeline">
-    <article class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-meta"><span>2025</span><small>FOUNDATION</small></div><div class="timeline-content"><h3>HTML &amp; CSS</h3><p>Mulai memahami struktur semantic HTML, styling, layout responsive, Flexbox, Grid, dan prinsip dasar UI.</p></div></article>
+    <article class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-meta"><span>2026</span><small>FOUNDATION</small></div><div class="timeline-content"><h3>HTML &amp; CSS</h3><p>Mulai memahami struktur semantic HTML, styling, layout responsive, Flexbox, Grid, dan prinsip dasar UI.</p></div></article>
     <article class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-meta"><span>2026</span><small>INTERACTION</small></div><div class="timeline-content"><h3>JavaScript</h3><p>Belajar DOM, event, interaksi halaman, dan membuat website terasa lebih hidup dengan JavaScript.</p></div></article>
     <article class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-meta"><span>2026</span><small>DATA</small></div><div class="timeline-content"><h3>PostgreSQL</h3><p>Mulai memahami database relasional, query SQL, tabel, kolom, dan hubungan antar data.</p></div></article>
     <article class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-meta"><span>NOW</span><small>BUILDING</small></div><div class="timeline-content"><h3>Real-world Projects</h3><p>Menggabungkan pembelajaran ke dalam portfolio, project web, dan sistem kasir toko kitab pondok.</p></div></article>
@@ -102,10 +118,44 @@
  </div>
 </section>
 
+<section class="section white certificates-section" id="certificates">
+ <div class="section-inner">
+  <div class="section-head split reveal"><div><small>05 / CERTIFICATES</small><h2>Learning is part<br><em>of building.</em></h2></div><p>Kumpulan pelatihan dan milestone belajar yang mendukung perjalanan saya di web development dan teknologi.</p></div>
+  <div class="certificate-gallery reveal" aria-label="Certificate gallery">
+    <div class="certificate-main">
+      <button class="certificate-main-btn" type="button" data-certificate="0" aria-label="Lihat sertifikat WordPress dalam ukuran besar">
+        <img id="certificate-main-image" src="assets/certificate-wordpress.webp" alt="Sertifikat Short Class Website Development Pakai WordPress" loading="lazy">
+        <span class="certificate-zoom">View certificate ↗</span>
+      </button>
+      <div class="certificate-main-copy">
+        <small id="certificate-main-kicker">01 / WEB DEVELOPMENT</small>
+        <h3 id="certificate-main-title">Short Class Website Development Pakai WordPress</h3>
+        <p id="certificate-main-desc">Certificate of Appreciation dari kelas singkat Website Development menggunakan WordPress.</p>
+      </div>
+    </div>
+    <div class="certificate-list">
+      <button class="certificate-card is-active" type="button" data-certificate="0">
+        <img src="assets/certificate-wordpress.webp" alt="Sertifikat WordPress" loading="lazy"><span><small>01</small><b>Website Development — WordPress</b></span><i>↗</i>
+      </button>
+      <button class="certificate-card" type="button" data-certificate="1">
+        <img src="assets/certificate-dicoding.webp" alt="Sertifikat Dicoding Belajar Dasar Pemrograman Web" loading="lazy"><span><small>02</small><b>Belajar Dasar Pemrograman Web</b></span><i>↗</i>
+      </button>
+      <button class="certificate-card" type="button" data-certificate="2">
+        <img src="assets/certificate-office.webp" alt="Sertifikat Microsoft Office Specialist Intermediate" loading="lazy"><span><small>03</small><b>Microsoft Office Specialist — Intermediate</b></span><i>↗</i>
+      </button>
+      <button class="certificate-card" type="button" data-certificate="3">
+        <img src="assets/certificate-html-css.webp" alt="Materi kelas HTML dan CSS Dicoding" loading="lazy"><span><small>04</small><b>HTML &amp; CSS — Web Development</b></span><i>↗</i>
+      </button>
+    </div>
+  </div>
+  <div class="certificate-note reveal"><span>04</span><div><b>Learning milestones</b><small>Setiap sertifikat menjadi bagian dari proses belajar yang kemudian saya terapkan ke project nyata.</small></div></div>
+ </div>
+</section>
+
 <section class="cta" id="contact">
  <div class="cta-glow"></div>
  <div class="section-inner">
-  <div class="cta-head reveal"><small>05 / CONTACT</small><h2>Let's make something<br><em>simple &amp; useful.</em></h2><p>Kalau ingin berdiskusi tentang website, project, atau sekadar terhubung, saya terbuka untuk ngobrol.</p><a class="pill dark magnetic" href="mailto:muhyidd03@gmail.com">Get in touch <span>↗</span></a></div>
+  <div class="cta-head reveal"><small>06 / CONTACT</small><h2>Let's make something<br><em>simple &amp; useful.</em></h2><p>Kalau ingin berdiskusi tentang website, project, atau sekadar terhubung, saya terbuka untuk ngobrol.</p><a class="pill dark magnetic" href="mailto:muhyidd03@gmail.com">Get in touch <span>↗</span></a></div>
   <div class="contact-grid reveal">
     <button class="contact-card copy-email" type="button" data-email="muhyidd03@gmail.com"><small>EMAIL</small><b>muhyidd03@gmail.com <span>Copy ↗</span></b></button>
     <a class="contact-card" href="https://github.com/muhyidd03-sudo" target="_blank" rel="noreferrer"><small>GITHUB</small><b>github.com/muhyidd03-sudo <span>Open ↗</span></b></a>
@@ -135,7 +185,7 @@
         <strong>Keep learning.<br><em>Keep building.</em></strong>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#certificates">Certificates</a><a href="#contact">Contact</a>
       </nav>
     </div>
     <div class="footer-bottom">
@@ -144,6 +194,16 @@
     </div>
   </div>
 </footer>
+<div class="certificate-modal" id="certificate-modal" aria-hidden="true">
+  <div class="certificate-modal-bg"></div>
+  <div class="certificate-modal-box" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+    <button class="certificate-modal-close" type="button" aria-label="Tutup sertifikat">×</button>
+    <div class="certificate-modal-top"><small id="certificate-modal-kicker">01 / WEB DEVELOPMENT</small><span id="certificate-modal-count">01 / 04</span></div>
+    <h2 id="certificate-modal-title">Short Class Website Development Pakai WordPress</h2>
+    <div class="certificate-modal-media"><img id="certificate-modal-image" src="assets/certificate-wordpress.webp" alt="Sertifikat" /></div>
+    <div class="certificate-modal-nav"><button type="button" id="certificate-prev" aria-label="Sertifikat sebelumnya">←</button><button type="button" id="certificate-next" aria-label="Sertifikat berikutnya">→</button></div>
+  </div>
+</div>
 <div class="modal" aria-hidden="true">
   <div class="modal-bg"></div>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">

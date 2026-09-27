@@ -95,6 +95,149 @@ const data={
  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan web development yang menjadi bagian dari perjalanan belajar saya, terutama dalam semantic HTML, CSS, responsive design, dan JavaScript.',overview:'Project ini dibuat sebagai bagian dari proses belajar web development dan latihan menerapkan struktur HTML semantic, layout CSS, serta navigasi dan tampilan yang responsif.',built:'Project ini saya gunakan untuk memperkuat fondasi frontend melalui tugas dan eksperimen kecil yang bisa langsung diuji di browser.',role:'Mengerjakan struktur halaman, styling, responsive layout, dan pengembangan bertahap mengikuti kebutuhan tugas.',image:'assets/dicoding-screenshot.png',alt:'Screenshot asli project web Dicoding Muhyiddin',highlights:['Semantic HTML','Flexbox dan responsive layout','Typography dan spacing','Dasar interaksi JavaScript','Pengembangan bertahap melalui latihan'],tags:['HTML','CSS','JavaScript','Dicoding'],links:[{label:'Profil Dicoding',href:'https://www.dicoding.com/users/muhyiddin_03hn8f/academies'}]}
 };
 
+/* V28 SELECTED WORK — reference-style continuous stacked slider */
+const showcaseTrack = document.querySelector('#showcase-track');
+const showcaseTag = document.querySelector('#showcase-tag');
+const showcaseTitle = document.querySelector('#showcase-title');
+const showcaseDesc = document.querySelector('#showcase-desc');
+const showcaseTags = document.querySelector('#showcase-tags');
+const showcaseView = document.querySelector('.showcase-view');
+const showcaseCurrent = document.querySelector('#showcase-current');
+const showcaseOrder = ['pos','portfolio','dicoding'];
+let showcaseProject = 0;
+let showcaseBusy = false;
+let showcaseCards = [];
+let showcaseTimer = null;
+
+const showcaseCopy = {
+  pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA untuk transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.',image:'assets/kasir-screenshot.webp',alt:'Screenshot Sistem Kasir Toko Kitab Pondok',tags:['VBA','Excel','Database']},
+  portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Portfolio responsive dengan visual minimal, animasi halus, dan interaksi modern.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot Personal Portfolio Muhyiddin',tags:['HTML','CSS','JavaScript']},
+  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan semantic HTML, CSS layout, responsive design, dan dasar JavaScript.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot Dicoding Web Project Muhyiddin',tags:['HTML','CSS','JavaScript']}
+};
+
+function modIndex(n){ return (n + showcaseOrder.length) % showcaseOrder.length; }
+function projectForSlot(slot){ return showcaseOrder[modIndex(showcaseProject + slot)]; }
+
+/* Five visual slots, exactly like the reference animation:
+   far-left -> near-left -> center -> near-right -> far-right.
+   We reuse the user's 3 real projects rather than inventing extra projects. */
+const slotNames = ['far-left','near-left','center','near-right','far-right'];
+const slotClassMap = {
+  '-4':'showcase-pos-off-left',
+  '-3':'showcase-pos-off-left',
+  '-2':'showcase-pos-far-left',
+  '-1':'showcase-pos-near-left',
+  '0':'showcase-pos-center',
+  '1':'showcase-pos-near-right',
+  '2':'showcase-pos-far-right',
+  '3':'showcase-pos-off-right',
+  '4':'showcase-pos-off-right'
+};
+
+function setSlot(card, slot){
+  Object.values(slotClassMap).forEach(c=>card.classList.remove(c));
+  const cls=slotClassMap[String(slot)];
+  if(cls) card.classList.add(cls);
+  card.dataset.slot=String(slot);
+  card.setAttribute('aria-hidden', Math.abs(slot)>2 ? 'true':'false');
+}
+function setCardProject(card,key){
+  const d=showcaseCopy[key];
+  card.dataset.project=key;
+  card.setAttribute('aria-label',`Buka ${d.title}`);
+  const img=card.querySelector('img');
+  if(img){img.src=d.image;img.alt=d.alt;}
+}
+function renderShowcaseCopy(animate=true){
+  const key=showcaseOrder[showcaseProject];
+  const d=showcaseCopy[key];
+  showcaseTag.textContent=d.tag;
+  showcaseTitle.textContent=d.title;
+  showcaseDesc.textContent=d.desc;
+  showcaseTags.innerHTML=d.tags.map(t=>`<span>${t}</span>`).join('');
+  showcaseView.dataset.projectTarget=key;
+  if(showcaseCurrent) showcaseCurrent.textContent=String(showcaseProject+1).padStart(2,'0');
+  const info=document.querySelector('.showcase-info');
+  if(animate && info){
+    info.classList.remove('showcase-copy-in');
+    void info.offsetWidth;
+    info.classList.add('showcase-copy-in');
+  }
+}
+function buildShowcaseCards(){
+  if(!showcaseTrack)return;
+  showcaseTrack.innerHTML='';
+  showcaseCards=[];
+  for(let slot=-3; slot<=3; slot++){
+    const key=projectForSlot(slot);
+    const d=showcaseCopy[key];
+    const card=document.createElement('button');
+    card.type='button';
+    card.className='showcase-card';
+    card.innerHTML=`<span class="showcase-card-media"><img src="${d.image}" alt="${d.alt}" loading="lazy"></span>`;
+    card.addEventListener('click',()=>{
+      const s=Number(card.dataset.slot);
+      if(s<0) moveShowcase(-1);
+      else if(s>0) moveShowcase(1);
+      else openProjectFromShowcase(card.dataset.project);
+    });
+    showcaseTrack.appendChild(card);
+    showcaseCards.push(card);
+    setCardProject(card,key);
+    setSlot(card,slot);
+  }
+}
+function renderShowcase(){
+  if(!showcaseTrack)return;
+  buildShowcaseCards();
+  renderShowcaseCopy(false);
+  requestAnimationFrame(()=>showcaseCards.forEach((c,i)=>setSlot(c,i-3)));
+}
+function openProjectFromShowcase(key){
+  const target=document.querySelector(`.open-project[data-project-target="${key}"]`);
+  if(target) target.click();
+  else if(typeof openModal==='function') openModal(key);
+}
+function moveShowcase(step, fromAuto=false){
+  if(showcaseBusy || !showcaseTrack)return;
+  const direction=step>0?1:-1;
+  showcaseBusy=true;
+  showcaseProject=modIndex(showcaseProject+direction);
+
+  /* Shift every card exactly one slot. No nth-child selectors are used,
+     so recycled cards never jump to the wrong side. */
+  showcaseCards.forEach(card=>{
+    const old=Number(card.dataset.slot);
+    setSlot(card,old-direction);
+  });
+  renderShowcaseCopy(true);
+
+  window.setTimeout(()=>{
+    /* Recycle the card that left the visible range. */
+    const recycled=showcaseCards.find(card=>Math.abs(Number(card.dataset.slot))>3);
+    if(recycled){
+      const newSlot=direction>0 ? 3 : -3;
+      recycled.style.transition='none';
+      setCardProject(recycled,projectForSlot(newSlot));
+      setSlot(recycled,newSlot);
+      void recycled.offsetWidth;
+      recycled.style.transition='';
+    }
+    showcaseBusy=false;
+  },1380);
+}
+function startShowcaseAuto(){
+  if(showcaseTimer) clearInterval(showcaseTimer);
+  showcaseTimer=setInterval(()=>moveShowcase(1,true),4200);
+}
+function stopShowcaseAuto(){ if(showcaseTimer) clearInterval(showcaseTimer); showcaseTimer=null; }
+document.addEventListener('keydown',e=>{
+  if(document.querySelector('.modal.open'))return;
+  if(e.key==='ArrowLeft'){stopShowcaseAuto();moveShowcase(-1);startShowcaseAuto();}
+  if(e.key==='ArrowRight'){stopShowcaseAuto();moveShowcase(1);startShowcaseAuto();}
+});
+if(showcaseTrack){renderShowcase();startShowcaseAuto();}
+
 const modal=document.querySelector('.modal');
 const modalBox=document.querySelector('.modal-box');
 const modalBg=document.querySelector('.modal-bg');
@@ -159,6 +302,10 @@ addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')cycleProject(1);
 });
 
+addEventListener('keydown',e=>{
+  if(modal.classList.contains('open')) return;
+});
+
 // Smooth, subtle hero motion.
 const hero=document.querySelector('.hero');
 if(hero&&finePointer){hero.addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);document.querySelectorAll('.hero-orb').forEach((orb,i)=>orb.style.transform=`translate(${x*(i?18:-12)}px,${y*(i?18:-12)}px)`);});}
@@ -209,3 +356,84 @@ modalProjectImage?.addEventListener('error', () => {
   modalProjectImage.alt = 'Preview project tidak dapat dimuat';
   modalProjectImage.classList.add('is-loaded');
 });
+
+/* V22 CERTIFICATE GALLERY */
+(() => {
+  const items = [
+    {kicker:'01 / WEB DEVELOPMENT', title:'Short Class Website Development Pakai WordPress', image:'assets/certificate-wordpress.webp', alt:'Sertifikat Short Class Website Development Pakai WordPress'},
+    {kicker:'02 / WEB DEVELOPMENT', title:'Belajar Dasar Pemrograman Web', image:'assets/certificate-dicoding.webp', alt:'Sertifikat Dicoding Belajar Dasar Pemrograman Web'},
+    {kicker:'03 / OFFICE', title:'Microsoft Office Specialist — Intermediate', image:'assets/certificate-office.webp', alt:'Sertifikat Microsoft Office Specialist Intermediate'},
+    {kicker:'04 / HTML & CSS', title:'HTML & CSS — Web Development', image:'assets/certificate-html-css.webp', alt:'Materi kelas HTML dan CSS Dicoding'}
+  ];
+  let current = 0;
+  const mainImg = document.getElementById('certificate-main-image');
+  const mainKicker = document.getElementById('certificate-main-kicker');
+  const mainTitle = document.getElementById('certificate-main-title');
+  const mainDesc = document.getElementById('certificate-main-desc');
+  const cards = [...document.querySelectorAll('.certificate-card')];
+  const modal = document.getElementById('certificate-modal');
+  const modalImg = document.getElementById('certificate-modal-image');
+  const modalKicker = document.getElementById('certificate-modal-kicker');
+  const modalTitle = document.getElementById('certificate-modal-title');
+  const modalCount = document.getElementById('certificate-modal-count');
+  const close = document.querySelector('.certificate-modal-close');
+  const bg = document.querySelector('.certificate-modal-bg');
+  const prev = document.getElementById('certificate-prev');
+  const next = document.getElementById('certificate-next');
+  const mainBtn = document.querySelector('.certificate-main-btn');
+  const body = document.body;
+  let lastFocus = null;
+
+  function render(index) {
+    current = (index + items.length) % items.length;
+    const d = items[current];
+    if (mainImg) { mainImg.src = d.image; mainImg.alt = d.alt; }
+    if (mainKicker) mainKicker.textContent = d.kicker;
+    if (mainTitle) mainTitle.textContent = d.title;
+    if (mainDesc) mainDesc.textContent = current === 0
+      ? 'Certificate of Appreciation dari kelas singkat Website Development menggunakan WordPress.'
+      : current === 1
+        ? 'Sertifikat kompetensi kelulusan untuk kelas Belajar Dasar Pemrograman Web di Dicoding.'
+        : current === 2
+          ? 'Certificate of Appreciation untuk Bootcamp Sertifikasi Microsoft Office Excel, Word & PowerPoint Specialist tingkat Intermediate.'
+          : 'Materi pelatihan dasar HTML dan CSS sebagai fondasi pengembangan website.';
+    cards.forEach((card,i)=>{
+      card.classList.toggle('is-active', i === current);
+      card.setAttribute('aria-current', i === current ? 'true' : 'false');
+    });
+  }
+
+  function openCert(index) {
+    lastFocus = document.activeElement;
+    render(index);
+    const d = items[current];
+    modalImg.src = d.image;
+    modalImg.alt = d.alt;
+    modalKicker.textContent = d.kicker;
+    modalTitle.textContent = d.title;
+    modalCount.textContent = `${String(current+1).padStart(2,'0')} / 04`;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    body.classList.add('modal-open');
+    setTimeout(() => close?.focus(), 30);
+  }
+  function closeCert() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    body.classList.remove('modal-open');
+    lastFocus?.focus();
+  }
+  cards.forEach((card,i)=>card.addEventListener('click',()=>{render(i); openCert(i);}));
+  mainBtn?.addEventListener('click',()=>openCert(current));
+  prev?.addEventListener('click',()=>openCert(current-1));
+  next?.addEventListener('click',()=>openCert(current+1));
+  close?.addEventListener('click',closeCert);
+  bg?.addEventListener('click',closeCert);
+  document.addEventListener('keydown',e=>{
+    if(!modal.classList.contains('open')) return;
+    if(e.key==='Escape') closeCert();
+    if(e.key==='ArrowLeft') openCert(current-1);
+    if(e.key==='ArrowRight') openCert(current+1);
+  });
+  render(0);
+})();

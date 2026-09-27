@@ -1,35 +1,35 @@
-# Muhyiddin — Personal Portfolio V12
+# Muhyiddin — Portfolio V28
 
-Portfolio personal berbasis HTML, CSS, dan JavaScript vanilla.
+V28 keeps the existing portfolio content and interactions, with the **Selected Work** section redesigned around the uploaded Work Gallery reference video.
 
-## Fitur
-- Responsive desktop, tablet, dan mobile
-- Dark mode dengan localStorage
-- Scroll reveal dan micro-interaction
-- Mobile navigation
-- Project showcase + case study modal
-- Previous/Next project navigation
-- Custom cursor pada perangkat pointer fine
-- Reduced-motion support
-- Accessibility focus state dan skip link
-- Screenshot project asli
-- Contact section dengan copy email
-- Optimasi gambar WebP untuk loading lebih ringan
+## Selected Work changes
+- Dark showcase section inspired by the reference video's composition.
+- Large centered project card with smaller surrounding previews.
+- 5-card visual carousel built from the 3 real projects using cyclic previews.
+- Smooth project transitions and content reveal animation.
+- Previous / next controls and keyboard arrow navigation.
+- `View project` opens the existing project case-study modal.
+- Responsive behavior for tablet and mobile.
 
-## Menjalankan
-Buka folder ini di VS Code lalu jalankan `index.html` dengan Live Server.
+## Projects
+1. Sistem Kasir Toko Kitab Pondok
+2. Personal Portfolio
+3. Dicoding Web Project
 
-## File
-- `index.html`
-- `style.css`
-- `script.js`
-- `assets/`
+The certificate gallery and the rest of the portfolio remain included from V22.
 
 
-V15 polish: Selected Work now uses the real Dicoding screenshot and the large System Kasir card no longer stretches with an empty white area.
+## V28 update
+- Selected Work uses the same light background language as the other main sections.
+- Gallery is slightly larger.
+- Previous/next controls are overlaid directly on the main project image.
 
 
-## V17
-- Selected Work diubah menjadi 3 project full-width/horizontal.
-- Project Showcase dihapus untuk menghindari pengulangan konten.
-- Responsive layout diperbaiki untuk desktop, tablet, dan mobile.
+V28: gallery animation rebuilt to match the reference motion: five stacked visual slots, continuous one-slot shifting, autoplay, pause on hover/focus, and position-based transforms that prevent cards from jumping after repeated navigation.
+
+## V29 — Reference-matched Work Gallery motion
+- Rebuilt the Selected Work carousel motion as a continuous 5-slot 3D conveyor.
+- Unified the JavaScript slot classes with the CSS so the animation does not mix incompatible V25/V27 selectors.
+- Tuned easing, duration, depth, overlap, scale, opacity, and perspective to more closely follow the supplied reference video.
+- Auto-play continues while hovering the gallery, matching the reference behavior more closely.
+- Existing 3 real projects are reused across the five visual slots; no fictional projects were added.
