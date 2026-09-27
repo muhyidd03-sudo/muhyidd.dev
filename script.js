@@ -155,7 +155,6 @@ function renderShowcaseCopy(animate=true){
   showcaseTitle.textContent=d.title;
   showcaseDesc.textContent=d.desc;
   showcaseTags.innerHTML=d.tags.map(t=>`<span>${t}</span>`).join('');
-  showcaseView.dataset.projectTarget=key;
   if(showcaseCurrent) showcaseCurrent.textContent=String(showcaseProject+1).padStart(2,'0');
   const info=document.querySelector('.showcase-info');
   if(animate && info){
