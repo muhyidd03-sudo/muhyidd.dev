@@ -808,7 +808,7 @@ html{scroll-padding-top:90px}
 /* V46 — Selected Work aligned with the global section design system */
 .work-gallery-section{
   min-height:0;
-  padding:150px 0 145px;
+  padding:150px 0;
 }
 .work-gallery-inner{
   width:min(1440px,calc(100% - 80px));
@@ -870,12 +870,12 @@ html{scroll-padding-top:90px}
 .showcase-info .showcase-view{margin-top:26px}
 
 @media(max-width:1100px){
-  .work-gallery-section{padding:120px 0 120px}
+  .work-gallery-section{padding:120px 0}
   .work-gallery-inner{width:min(1440px,calc(100% - 60px))}
   .work-gallery-heading{gap:30px}
 }
 @media(max-width:780px){
-  .work-gallery-section{padding:100px 0 105px;min-height:0}
+  .work-gallery-section{padding:95px 0;min-height:0}
   .work-gallery-inner{width:calc(100% - 40px)}
   .work-gallery-heading{display:block}
   .work-gallery-heading h2{font-size:clamp(42px,10vw,64px)}
@@ -884,7 +884,7 @@ html{scroll-padding-top:90px}
   .showcase-carousel{margin-top:34px}
 }
 @media(max-width:520px){
-  .work-gallery-section{padding:78px 0 90px;min-height:0}
+  .work-gallery-section{padding:88px 0;min-height:0}
   .work-gallery-inner{width:calc(100% - 32px);padding-left:0;padding-right:0}
   .work-gallery-heading{gap:0}
   .work-gallery-heading small{font-size:10px}
@@ -1110,5 +1110,384 @@ html{scroll-padding-top:90px}
   }
   .showcase-tags{
     margin-top:8px;
+  }
+}
+
+/* V67 — Typography consistency polish
+   Only refines type scale/weight in Selected Work; layout and animation remain unchanged. */
+.work-gallery-heading h2{
+  font-weight:700;
+}
+.work-gallery-heading p{
+  font-size:13.5px;
+  line-height:1.7;
+}
+.work-gallery-count{
+  font-size:10px;
+  line-height:1.4;
+}
+.showcase-info h3{
+  font-weight:700;
+}
+.showcase-info p{
+  font-size:11px;
+  line-height:1.65;
+}
+.showcase-tags span{
+  font-size:9px;
+}
+@media(max-width:700px){
+  .work-gallery-heading p{
+    font-size:13px;
+  }
+  .showcase-info p{
+    font-size:12px;
+  }
+}
+
+/* =========================================================
+   V68 — CERTIFICATES CONSISTENCY POLISH
+   Subtle integration with the main section rhythm.
+========================================================= */
+.certificates-section .section-head.split{
+  margin-bottom:62px;
+}
+.certificates-section .section-head.split>p{
+  max-width:410px;
+  line-height:1.7;
+}
+.certificate-gallery{
+  gap:26px;
+}
+.certificate-main-copy{
+  padding:28px 30px 32px;
+}
+.certificate-main-copy h3{
+  margin-top:10px;
+}
+.certificate-main-copy p{
+  line-height:1.7;
+}
+.certificate-list{
+  gap:10px;
+}
+.certificate-card{
+  min-height:104px;
+}
+.certificate-note{
+  margin-top:28px;
+}
+@media(max-width:900px){
+  .certificates-section .section-head.split{
+    margin-bottom:50px;
+  }
+  .certificate-gallery{
+    gap:18px;
+  }
+}
+@media(max-width:600px){
+  .certificates-section .section-head.split{
+    margin-bottom:42px;
+  }
+  .certificate-main-copy{
+    padding:22px 20px 24px;
+  }
+  .certificate-card{
+    min-height:0;
+  }
+  .certificate-note{
+    margin-top:20px;
+  }
+}
+
+/* =========================================================
+   V69 — DARK MODE CERTIFICATES FIX
+   Keep certificate artwork bright, but adapt the UI around it.
+========================================================= */
+.dark-mode .certificates-section .section-head small,
+.dark-mode .certificates-section .section-head > p{
+  color:#aebcc1;
+}
+.dark-mode .certificate-main{
+  background:linear-gradient(145deg,#172127,#121b20);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 22px 55px rgba(0,0,0,.22);
+}
+.dark-mode .certificate-main-btn{
+  background:linear-gradient(145deg,#1b2a30,#142126);
+}
+.dark-mode .certificate-main-btn img{
+  background:#fff;
+  box-shadow:0 18px 42px rgba(0,0,0,.28);
+}
+.dark-mode .certificate-main-copy h3{
+  color:#f4f7f8;
+}
+.dark-mode .certificate-main-copy p{
+  color:#aebbc0;
+}
+.dark-mode .certificate-card{
+  background:#172127;
+  border-color:rgba(255,255,255,.12);
+  color:#f4f7f8;
+}
+.dark-mode .certificate-card:hover,
+.dark-mode .certificate-card.is-active{
+  background:#1c2c33;
+  border-color:rgba(19,157,204,.38);
+  box-shadow:0 16px 38px rgba(0,0,0,.22);
+}
+.dark-mode .certificate-card small{
+  color:#91a3aa;
+}
+.dark-mode .certificate-card b{
+  color:#eef5f7;
+}
+.dark-mode .certificate-card img{
+  background:#fff;
+}
+.dark-mode .certificate-card i{
+  border-color:rgba(255,255,255,.16);
+  color:#dce7ea;
+}
+.dark-mode .certificate-card:hover i,
+.dark-mode .certificate-card.is-active i{
+  background:#139dcc;
+  border-color:#139dcc;
+  color:#fff;
+}
+.dark-mode .certificate-note{
+  background:#172127;
+  border-color:rgba(255,255,255,.12);
+}
+.dark-mode .certificate-note b{
+  color:#eef5f7;
+}
+.dark-mode .certificate-note small{
+  color:#9eafb5;
+}
+.dark-mode .certificate-note > span{
+  background:#20343c;
+  color:#6ed4f1;
+}
+.dark-mode .certificate-modal-box{
+  background:#172127;
+  color:#eef5f7;
+}
+.dark-mode .certificate-modal-close,
+.dark-mode .certificate-modal-nav button{
+  background:#203038;
+  border-color:rgba(255,255,255,.14);
+  color:#eef5f7;
+}
+.dark-mode .certificate-modal-top span{
+  color:#9eafb5;
+}
+.dark-mode .certificate-modal-box h2{
+  color:#eef5f7;
+}
+.dark-mode .certificate-modal-media{
+  background:#111b20;
+  border-color:rgba(255,255,255,.12);
+}
+.dark-mode .certificate-modal-media img{
+  background:#fff;
+}
+.dark-mode .certificate-modal-nav button:hover{
+  background:#139dcc;
+  border-color:#139dcc;
+  color:#fff;
+}
+
+/* =========================
+   V70 — NAVBAR + HERO POLISH
+   Subtle consistency pass only. No layout concept changes.
+========================= */
+.nav-wrap.scrolled{
+  box-shadow:0 8px 28px rgba(15,25,30,.045);
+}
+.nav-menu{
+  gap:26px;
+  font-size:12px;
+}
+.nav-item{
+  transition:opacity .25s ease,color .25s ease;
+}
+.theme-btn{
+  width:40px;
+  height:40px;
+  transition:transform .3s ease,background .3s ease,border-color .3s ease;
+}
+.theme-btn:hover{
+  transform:rotate(12deg) scale(1.04);
+}
+.hero-top,.hero-bottom{
+  letter-spacing:.17em;
+}
+.hero-grid{
+  gap:64px;
+}
+.hero h1{
+  max-width:900px;
+}
+.hero-desc{
+  line-height:1.7;
+}
+.hero-actions{
+  gap:12px;
+}
+
+.dark-mode .nav-wrap.scrolled{
+  box-shadow:0 8px 28px rgba(0,0,0,.18);
+}
+
+@media (min-width:1101px) and (max-width:1500px){
+  .nav-menu{gap:24px}
+  .hero-grid{gap:56px}
+  .hero-desc{line-height:1.7}
+}
+
+@media(max-width:1050px){
+  .hero-grid{gap:46px}
+}
+
+@media(max-width:700px){
+  .nav-wrap{padding:14px 0}
+  .nav-menu{
+    gap:2px;
+    font-size:13px;
+  }
+  .nav-item{
+    padding:11px 12px;
+  }
+  .dark-mode .nav-menu{
+    background:rgba(18,27,32,.96);
+    color:#f4f7f8;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .dark-mode .menu-btn{
+    background:#fff;
+  }
+  .dark-mode .menu-btn i{
+    background:#111;
+  }
+  .hero-grid{gap:36px}
+  .hero h1{
+    line-height:.94;
+  }
+  .hero-desc{
+    line-height:1.7;
+  }
+  .hero-actions{
+    gap:9px;
+  }
+}
+
+@media(max-width:380px){
+  .nav-menu{font-size:12px}
+  .hero-desc{font-size:13px}
+}
+
+/* =========================================================
+   FINAL RESPONSIVE NORMALIZATION — V72
+   Keeps the existing design intact and gives each device range
+   one predictable final pass. No section concept is changed.
+========================================================= */
+html, body{max-width:100%;overflow-x:clip}
+
+/* Laptop / small desktop */
+@media (max-width:1100px) and (min-width:901px){
+  .section-inner,.nav,.hero-inner{width:min(calc(100% - 48px),1440px)}
+  .section{padding:120px 0}
+  .hero-grid{gap:40px}
+  .about-layout{gap:50px}
+  .showcase-copy{padding:48px 42px}
+}
+
+/* Tablet */
+@media (max-width:900px) and (min-width:701px){
+  .section-inner,.nav,.hero-inner{width:calc(100% - 44px)}
+  .section{padding:105px 0}
+  .hero-grid{grid-template-columns:1fr;gap:42px;padding:60px 0 50px}
+  .hero-art{justify-content:center}
+  .art-card{width:min(440px,100%)}
+  .about-layout{grid-template-columns:1fr;gap:50px}
+  .work-grid{grid-template-columns:1fr 1fr}
+  .work-card.large{grid-column:1/-1;grid-row:auto}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .showcase-item,.showcase-item.reverse{grid-template-columns:1fr}
+  .showcase-item.reverse .showcase-visual,.showcase-item.reverse .showcase-copy{order:initial}
+}
+
+/* Mobile */
+@media (max-width:700px){
+  .section-inner,.nav,.hero-inner{width:calc(100% - 36px)}
+  .section{padding:100px 0}
+  .section-head{margin-bottom:48px}
+  .hero-inner{padding-top:105px;padding-bottom:24px}
+  .hero-grid{grid-template-columns:1fr;gap:36px;padding:55px 0 35px}
+  .hero h1{font-size:clamp(48px,14vw,72px);line-height:.94}
+  .hero-desc{font-size:14px;line-height:1.7;margin:22px 0 24px}
+  .hero-actions{flex-wrap:wrap;gap:9px}
+  .pill{min-height:50px}
+  .hero-art{justify-content:center}
+  .art-card{width:min(390px,100%)}
+  .split{display:block}
+  .split>p{margin-top:24px}
+  .about-layout{grid-template-columns:1fr;gap:45px}
+  .work-grid{grid-template-columns:1fr}
+  .work-card.large{grid-column:auto;grid-row:auto}
+  .work-image,.large .work-image{height:auto;min-height:300px}
+  .skill-row{grid-template-columns:36px 1fr 22px;gap:12px}
+  .skill-row p{grid-column:2/-1;margin-top:-6px}
+  .contact-grid{grid-template-columns:1fr;margin-top:60px}
+  .footer-inner{grid-template-columns:1fr;align-items:start}
+  .footer-links{flex-wrap:wrap}
+  .showcase-item,.showcase-item.reverse{grid-template-columns:1fr}
+  .showcase-copy{padding:36px 26px}
+  .cursor-dot,.cursor-ring{display:none!important}
+}
+
+/* Small phones */
+@media (max-width:380px){
+  .section-inner,.nav,.hero-inner{width:calc(100% - 28px)}
+  .section{padding:88px 0}
+  .hero h1{font-size:46px}
+  .hero-desc{font-size:13px}
+  .hero-actions .pill{width:100%;justify-content:center}
+  .art-card{border-radius:26px}
+  .showcase-copy h3{font-size:34px}
+  .nav-menu{font-size:12px}
+}
+
+
+/* V82 accessibility polish */
+:focus-visible {
+  outline: 3px solid #139dcc;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  transform: translateY(-160%);
+  transition: transform .2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }

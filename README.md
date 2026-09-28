@@ -1,8 +1,19 @@
-Muhyiddin Personal Portfolio — V62
-Selected Work polish based on V61.
+# Muhyiddin Portfolio — V84
 
-Changes:
-- Refined Selected Work spacing and typography.
-- Smoothed project information transition.
-- Kept the editorial composition and removed View Project button under the project image.
-- Fixed the JavaScript reference left behind after removing the button.
+V84 is the final quality-check and cleanup pass built from V83.
+
+## Checks completed
+- Verified all local HTML/CSS/JS/assets referenced by the page exist.
+- Verified internal section links point to existing IDs.
+- Verified `script.js` passes Node syntax checking.
+- Verified required semantic landmarks are present: `header`, `nav`, `main`, `article`, `aside`, and `footer`.
+- Verified portfolio metadata, favicon, social links, skip link, theme button state, and reduced-motion support remain present.
+- Removed no visual/content features; the established V83 design and responsive behavior are preserved.
+
+## Included
+- `index.html`
+- `style.css`
+- `script.js`
+- `assets/`
+
+Open `index.html` directly in a browser to preview the portfolio.

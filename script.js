@@ -47,9 +47,16 @@ document.querySelectorAll('.hero-scroll[data-scroll-target]').forEach(button=>{
 
 const savedTheme=localStorage.getItem('muhyiddin-theme');
 if(savedTheme==='dark') body.classList.add('dark-mode');
+const syncThemeButton = () => {
+  const dark = body.classList.contains('dark-mode');
+  themeBtn?.setAttribute('aria-pressed', String(dark));
+  themeBtn?.setAttribute('aria-label', dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+};
+syncThemeButton();
 themeBtn?.addEventListener('click',()=>{
   body.classList.toggle('dark-mode');
   localStorage.setItem('muhyiddin-theme',body.classList.contains('dark-mode')?'dark':'light');
+  syncThemeButton();
 });
 
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
@@ -90,9 +97,9 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
 });
 
 const data={
- pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA yang saya bangun untuk membantu alur penjualan kitab dan pengelolaan data toko pondok.',overview:'Project ini berangkat dari kebutuhan membuat proses kasir toko kitab lebih terstruktur, dari pemilihan pembeli sampai pencatatan transaksi dan stok.',built:'Fokus project ini adalah membuat alur kasir yang lebih praktis: kitab dapat dimuat berdasarkan kelas santri, item bisa diedit atau ditambah, stok divalidasi, transaksi dicatat, dan status piutang dapat dilacak.',role:'Perancangan alur kasir, struktur workbook, VBA interaction, validasi transaksi, dan pengembangan database sheet.',image:'assets/kasir-screenshot.png',alt:'Screenshot asli Sistem Kasir Toko Kitab Pondok',highlights:['Keranjang transaksi dengan Qty yang bisa diedit','Daftar kitab otomatis berdasarkan kelas','Tambah dan hapus kitab dari keranjang','Validasi stok dan mutasi stok','Pencatatan piutang dan pembayaran','Struktur data transaksi dan detail transaksi'],tags:['Excel VBA','POS','Inventory','Database'],links:[]},
- portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Website portfolio pribadi yang saya gunakan untuk memperkenalkan diri, mendokumentasikan project, dan menunjukkan proses belajar web development.',overview:'Portfolio ini saya bangun sebagai project nyata untuk menerapkan HTML, CSS, dan JavaScript sekaligus belajar membuat pengalaman pengguna yang lebih rapi dan interaktif.',built:'Website ini dibuat dengan HTML, CSS, dan JavaScript tanpa framework besar. Fokusnya adalah typography, responsive layout, animasi yang halus, dan interaksi yang tetap nyaman digunakan.',role:'UI structure, responsive styling, interaction, animation, dan pengembangan halaman dari konsep sampai implementasi.',image:'assets/portfolio-screenshot.png',alt:'Screenshot asli Personal Portfolio Muhyiddin',highlights:['Semantic HTML dan struktur section yang jelas','Responsive desktop, tablet, dan mobile','Dark mode dengan localStorage','Scroll reveal dan micro-interaction','Project showcase dan detail modal','Accessible focus dan reduced-motion support'],tags:['HTML','CSS','JavaScript','Responsive'],links:[{label:'GitHub',href:'https://github.com/muhyidd03-sudo'}]},
- dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan web development yang menjadi bagian dari perjalanan belajar saya, terutama dalam semantic HTML, CSS, responsive design, dan JavaScript.',overview:'Project ini dibuat sebagai bagian dari proses belajar web development dan latihan menerapkan struktur HTML semantic, layout CSS, serta navigasi dan tampilan yang responsif.',built:'Project ini saya gunakan untuk memperkuat fondasi frontend melalui tugas dan eksperimen kecil yang bisa langsung diuji di browser.',role:'Mengerjakan struktur halaman, styling, responsive layout, dan pengembangan bertahap mengikuti kebutuhan tugas.',image:'assets/dicoding-screenshot.png',alt:'Screenshot asli project web Dicoding Muhyiddin',highlights:['Semantic HTML','Flexbox dan responsive layout','Typography dan spacing','Dasar interaksi JavaScript','Pengembangan bertahap melalui latihan'],tags:['HTML','CSS','JavaScript','Dicoding'],links:[{label:'Profil Dicoding',href:'https://www.dicoding.com/users/muhyiddin_03hn8f/academies'}]}
+ pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA yang saya bangun untuk membuat proses penjualan kitab, pengelolaan stok, dan pencatatan transaksi lebih terstruktur.',overview:'Project ini berangkat dari kebutuhan membuat proses kasir toko kitab lebih terstruktur, mulai dari pemilihan pembeli, keranjang transaksi, hingga pencatatan stok.',built:'Saya membuat alur kasir yang lebih praktis: kitab dapat dimuat berdasarkan kelas santri, item bisa diedit atau ditambah, stok divalidasi, transaksi dicatat, dan piutang dapat dilacak.',role:'Merancang alur kasir, struktur workbook, interaksi VBA, validasi transaksi, dan struktur database di dalam workbook.',image:'assets/kasir-screenshot.webp',alt:'Screenshot asli Sistem Kasir Toko Kitab Pondok',highlights:['Keranjang transaksi dengan Qty yang bisa diedit','Daftar kitab otomatis berdasarkan kelas','Tambah dan hapus kitab dari keranjang','Validasi stok dan mutasi stok','Pencatatan piutang dan pembayaran','Struktur data transaksi dan detail transaksi'],tags:['Excel VBA','POS','Inventory','Database'],links:[]},
+ portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Website portfolio pribadi untuk memperkenalkan diri, menampilkan project, dan mendokumentasikan perjalanan belajar web development.',overview:'Portfolio ini saya bangun sebagai project nyata untuk menerapkan HTML, CSS, dan JavaScript sekaligus belajar merancang pengalaman pengguna yang rapi dan interaktif.',built:'Website ini dibuat dengan HTML, CSS, dan JavaScript tanpa framework. Fokusnya pada typography, responsive layout, animasi halus, dark mode, dan interaksi yang tetap nyaman digunakan.',role:'Mengerjakan struktur UI, responsive styling, interaction, animation, dan pengembangan halaman dari konsep hingga implementasi.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot asli Personal Portfolio Muhyiddin',highlights:['Semantic HTML dan struktur section yang jelas','Responsive desktop, tablet, dan mobile','Dark mode dengan localStorage','Scroll reveal dan micro-interaction','Project showcase dan detail modal','Accessible focus dan reduced-motion support'],tags:['HTML','CSS','JavaScript','Responsive'],links:[{label:'GitHub',href:'https://github.com/muhyidd03-sudo'}]},
+ dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan dari pembelajaran Dicoding untuk memperkuat dasar semantic HTML, CSS, layout responsive, dan penyusunan halaman web.',overview:'Project ini dibuat sebagai bagian dari proses belajar web development, dengan fokus pada semantic HTML, layout CSS, navigasi, dan tampilan yang responsif.',built:'Project ini saya gunakan untuk memperkuat fondasi frontend melalui tugas dan latihan yang langsung diterapkan dan diuji di browser.',role:'Mengerjakan struktur halaman, styling, responsive layout, dan pengembangan bertahap mengikuti kebutuhan tugas.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot asli project web Dicoding Muhyiddin',highlights:['Semantic HTML','Flexbox dan responsive layout','Typography dan spacing','Navigasi halaman yang terstruktur','Pengembangan bertahap melalui latihan'],tags:['HTML','CSS','Dicoding'],links:[{label:'Profil Dicoding',href:'https://www.dicoding.com/users/muhyiddin_03hn8f/academies'}]}
 };
 
 /* V28 SELECTED WORK — reference-style continuous stacked slider */
@@ -110,9 +117,9 @@ let showcaseCards = [];
 let showcaseTimer = null;
 
 const showcaseCopy = {
-  pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA untuk transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.',image:'assets/kasir-screenshot.webp',alt:'Screenshot Sistem Kasir Toko Kitab Pondok',tags:['VBA','Excel','Database']},
-  portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Portfolio responsive dengan visual minimal, animasi halus, dan interaksi modern.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot Personal Portfolio Muhyiddin',tags:['HTML','CSS','JavaScript']},
-  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan semantic HTML, CSS layout, responsive design, dan dasar JavaScript.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot Dicoding Web Project Muhyiddin',tags:['HTML','CSS','JavaScript']}
+  pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA untuk mengelola transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.',image:'assets/kasir-screenshot.webp',alt:'Screenshot Sistem Kasir Toko Kitab Pondok',tags:['VBA','Excel','Database']},
+  portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Portfolio responsive dengan visual minimal, animasi halus, dark mode, dan interaksi modern.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot Personal Portfolio Muhyiddin',tags:['HTML','CSS','JavaScript']},
+  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan Dicoding yang berfokus pada semantic HTML, CSS layout, dan responsive design.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot Dicoding Web Project Muhyiddin',tags:['HTML','CSS']}
 };
 
 function modIndex(n){ return (n + showcaseOrder.length) % showcaseOrder.length; }
@@ -362,7 +369,7 @@ modalProjectImage?.addEventListener('error', () => {
     {kicker:'01 / WEB DEVELOPMENT', title:'Short Class Website Development Pakai WordPress', image:'assets/certificate-wordpress.webp', alt:'Sertifikat Short Class Website Development Pakai WordPress'},
     {kicker:'02 / WEB DEVELOPMENT', title:'Belajar Dasar Pemrograman Web', image:'assets/certificate-dicoding.webp', alt:'Sertifikat Dicoding Belajar Dasar Pemrograman Web'},
     {kicker:'03 / OFFICE', title:'Microsoft Office Specialist — Intermediate', image:'assets/certificate-office.webp', alt:'Sertifikat Microsoft Office Specialist Intermediate'},
-    {kicker:'04 / HTML & CSS', title:'HTML & CSS — Web Development', image:'assets/certificate-html-css.webp', alt:'Materi kelas HTML dan CSS Dicoding'}
+    {kicker:'04 / HTML & CSS', title:'Dasar HTML & CSS — Dicoding', image:'assets/certificate-html-css.webp', alt:'Materi Dicoding dasar HTML dan CSS'}
   ];
   let current = 0;
   const mainImg = document.getElementById('certificate-main-image');
@@ -390,12 +397,12 @@ modalProjectImage?.addEventListener('error', () => {
     if (mainKicker) mainKicker.textContent = d.kicker;
     if (mainTitle) mainTitle.textContent = d.title;
     if (mainDesc) mainDesc.textContent = current === 0
-      ? 'Certificate of Appreciation dari kelas singkat Website Development menggunakan WordPress.'
+      ? 'Certificate of Appreciation dari Short Class Website Development Pakai WordPress, KarirNex by PT Ebiz Karisma Internasional (31 Agustus 2026).'
       : current === 1
-        ? 'Sertifikat kompetensi kelulusan untuk kelas Belajar Dasar Pemrograman Web di Dicoding.'
+        ? 'Sertifikat kompetensi kelulusan Dicoding untuk kelas Belajar Dasar Pemrograman Web (6 September 2026).'
         : current === 2
-          ? 'Certificate of Appreciation untuk Bootcamp Sertifikasi Microsoft Office Excel, Word & PowerPoint Specialist tingkat Intermediate.'
-          : 'Materi pelatihan dasar HTML dan CSS sebagai fondasi pengembangan website.';
+          ? 'Certificate of Appreciation untuk Bootcamp Sertifikasi Microsoft Office Excel, Word & PowerPoint Specialist tingkat Intermediate, KarirNex by PT Ebiz Karisma Internasional (10, 12, 14, 18, 20, dan 24 Agustus 2026).'
+          : 'Materi pembelajaran Dicoding tentang dasar HTML, CSS, dan layout responsif sebagai fondasi pengembangan website.';
     cards.forEach((card,i)=>{
       card.classList.toggle('is-active', i === current);
       card.setAttribute('aria-current', i === current ? 'true' : 'false');

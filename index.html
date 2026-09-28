@@ -5,11 +5,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Portfolio Muhyiddin — Web Developer. Clean interfaces, responsive websites, and interactive experiences.">
 <meta name="theme-color" content="#139dcc">
+<meta name="author" content="Muhyiddin">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta property="og:locale" content="id_ID">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Muhyiddin — Web Developer">
+<meta property="og:description" content="Portfolio Muhyiddin — Web Developer. Clean interfaces, responsive websites, and interactive experiences.">
+<meta property="og:image" content="assets/profile.webp">
+<meta property="og:image:alt" content="Foto Muhyiddin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhyiddin — Web Developer">
+<meta name="twitter:description" content="Portfolio Muhyiddin — Web Developer. Clean interfaces, responsive websites, and interactive experiences.">
+<meta name="twitter:image" content="assets/profile.webp">
+<link rel="icon" type="image/png" sizes="128x128" href="assets/favicon.png">
 <title>Muhyiddin — Web Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="assets/profile.webp" fetchpriority="high">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -20,7 +35,7 @@
     <button class="menu-btn" aria-label="Buka menu" aria-expanded="false"><i></i><i></i></button>
     <div class="nav-menu">
       <a class="nav-item active" href="#home">Home</a><a class="nav-item" href="#about">About</a><a class="nav-item" href="#work">Work</a><a class="nav-item" href="#skills">Skills</a><a class="nav-item" href="#journey">Journey</a><a class="nav-item" href="#certificates">Certificates</a><a class="nav-item" href="#contact">Contact</a>
-      <button class="theme-btn" aria-label="Ganti tema">◐</button>
+      <button class="theme-btn" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false">◐</button>
     </div>
   </nav>
 </header>
@@ -33,13 +48,13 @@
       <div class="hero-copy">
         <p class="eyebrow reveal">WEB DEVELOPER <span>✦</span> INDONESIA</p>
         <h1 class="reveal delay-1">Building digital<br><em>experiences</em><br>that feel <strong>simple.</strong></h1>
-        <p class="hero-desc reveal delay-2">Saya Muhyiddin. Saya sedang membangun kemampuan web development dengan fokus pada interface yang bersih, responsive, dan terasa hidup.</p>
+        <p class="hero-desc reveal delay-2">Saya Muhyiddin, seorang web developer yang sedang terus belajar dan membangun berbagai project digital. Saya fokus pada website yang bersih, responsive, dan nyaman digunakan.</p>
         <div class="hero-actions reveal delay-3"><a class="pill primary magnetic hero-scroll" href="#work" data-scroll-target="work">Explore my work <span>↗</span></a><a class="pill light magnetic hero-scroll" href="#contact" data-scroll-target="contact">Let's talk <span>→</span></a></div>
       </div>
       <div class="hero-art reveal delay-2">
         <div class="art-card" data-tilt>
           <div class="art-top"><span>MUHYIDDIN</span><span>01—06</span></div>
-          <div class="art-center"><div class="orbit o1"></div><div class="orbit o2"></div><div class="portrait"><img src="assets/profile.png" alt="Foto Muhyiddin"></div><div class="chip chip-1">WEB<br><b>DEVELOPER</b></div><div class="chip chip-2">BASED IN<br><b>INDONESIA</b></div></div>
+          <div class="art-center"><div class="orbit o1"></div><div class="orbit o2"></div><div class="portrait"><img src="assets/profile.webp" alt="Foto Muhyiddin" width="1003" height="1361" decoding="async" fetchpriority="high"></div><div class="chip chip-1">WEB<br><b>DEVELOPER</b></div><div class="chip chip-2">BASED IN<br><b>INDONESIA</b></div></div>
           <div class="art-bottom"><span>HTML · CSS · JS</span><b>SCROLL ↘</b></div>
         </div>
       </div>
@@ -53,11 +68,11 @@
  <div class="section-inner">
   <div class="section-head reveal"><small>01 / ABOUT</small><h2>Clean by nature.<br><em>Curious by choice.</em></h2></div>
   <div class="about-layout">
-    <div class="about-lead reveal"><p>Saya suka membuat sesuatu yang sederhana terasa lebih baik: struktur yang jelas, tampilan yang rapi, dan interaksi yang tidak mengganggu.</p><a class="arrow-link" href="#contact">Let's connect <span>↗</span></a></div>
+    <div class="about-lead reveal"><p>Saya menikmati proses mengubah ide menjadi sesuatu yang bisa digunakan—mulai dari struktur yang jelas, tampilan yang rapi, hingga interaksi yang terasa natural.</p><a class="arrow-link" href="#contact">Let's connect <span>↗</span></a></div>
     <div class="about-cards">
       <article class="mini-card reveal"><span>01</span><div><small>FOCUS</small><h3>Web Development</h3><p>Frontend, responsive UI, dan dasar backend.</p></div></article>
-      <article class="mini-card reveal"><span>02</span><div><small>APPROACH</small><h3>Learn by Building</h3><p>Belajar melalui project nyata dan iterasi.</p></div></article>
-      <article class="mini-card reveal"><span>03</span><div><small>BASED</small><h3>Indonesia</h3><p>Membangun dan belajar dari Indonesia.</p></div></article>
+      <article class="mini-card reveal"><span>02</span><div><small>APPROACH</small><h3>Learn by Building</h3><p>Belajar lewat project nyata, mencoba, mengevaluasi, lalu memperbaiki.</p></div></article>
+      <article class="mini-card reveal"><span>03</span><div><small>BASED</small><h3>Indonesia</h3><p>Terus belajar dan membangun project dari Indonesia.</p></div></article>
     </div>
   </div>
  </div>
@@ -68,13 +83,13 @@
   <div class="work-gallery-heading reveal">
     <div>
       <small>02 / SELECTED WORK</small>
-      <h2>Things I've<br><em>been building.</em></h2>
-      <p>A collection of systems, digital projects, and technical work that I have built while learning and experimenting.</p>
+      <h2>Work<br><em>Gallery.</em></h2>
+      <p>A collection of real projects I have built while learning, experimenting, and turning ideas into usable digital work.</p>
     </div>
     <div class="work-gallery-count"><span>03</span> REAL PROJECTS</div>
   </div>
 
-  <div class="showcase-carousel reveal" aria-label="Selected work gallery">
+  <div class="showcase-carousel reveal" role="region" aria-label="Selected work gallery" tabindex="0">
     <div class="showcase-track" id="showcase-track"></div>
     <div class="showcase-fade showcase-fade-left"></div>
     <div class="showcase-fade showcase-fade-right"></div>
@@ -94,12 +109,12 @@
  <div class="section-inner">
   <div class="section-head split reveal"><div><small>03 / SKILLS</small><h2>Tools I use<br><em>to create.</em></h2></div><p>Teknologi yang sedang saya gunakan dan terus saya kembangkan melalui project nyata.</p></div>
   <div class="skills-list">
-    <div class="skill-row reveal"><span>01</span><h3>HTML5</h3><p>Semantic structure, accessible markup, dan struktur halaman yang rapi.</p><b>↗</b></div>
-    <div class="skill-row reveal"><span>02</span><h3>CSS3</h3><p>Responsive layout, Flexbox, Grid, typography, animation, dan visual systems.</p><b>↗</b></div>
-    <div class="skill-row reveal"><span>03</span><h3>JavaScript</h3><p>Interactive UI, DOM, event handling, dan browser-side functionality.</p><b>↗</b></div>
-    <div class="skill-row reveal"><span>04</span><h3>PostgreSQL</h3><p>Dasar SQL, tabel relasional, query, dan pengelolaan data.</p><b>↗</b></div>
-    <div class="skill-row reveal"><span>05</span><h3>Git / GitHub</h3><p>Version control, repository, dan workflow project.</p><b>↗</b></div>
-    <div class="skill-row reveal"><span>06</span><h3>Excel VBA</h3><p>Membangun aplikasi kasir dan workflow database berbasis Excel.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>01</span><h3>HTML5</h3><p>Semantic HTML, accessible markup, dan struktur halaman yang rapi.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>02</span><h3>CSS3</h3><p>Responsive layout, Flexbox, styling, typography, dan visual design.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>03</span><h3>JavaScript</h3><p>DOM manipulation, event handling, dan interaksi dasar pada website.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>04</span><h3>Responsive Web Design</h3><p>Membuat layout yang menyesuaikan desktop, tablet, dan mobile.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>05</span><h3>Git &amp; GitHub</h3><p>Repository, version control, dan pengelolaan project.</p><b>↗</b></div>
+    <div class="skill-row reveal"><span>06</span><h3>Excel VBA</h3><p>Automation, workflow database, dan pengembangan sistem kasir berbasis Excel.</p><b>↗</b></div>
   </div>
  </div>
 </section>
@@ -119,31 +134,31 @@
 
 <section class="section white certificates-section" id="certificates">
  <div class="section-inner">
-  <div class="section-head split reveal"><div><small>05 / CERTIFICATES</small><h2>Proof of<br><em>learning.</em></h2></div><p>Kumpulan pelatihan dan milestone belajar yang mendukung perjalanan saya di web development dan teknologi.</p></div>
-  <div class="certificate-gallery reveal" aria-label="Certificate gallery">
+  <div class="section-head split reveal"><div><small>05 / CERTIFICATES</small><h2>Proof of<br><em>learning.</em></h2></div><p>Kumpulan sertifikat, pelatihan, dan materi belajar yang mendukung perjalanan saya di web development dan teknologi.</p></div>
+  <div class="certificate-gallery reveal" role="region" aria-label="Certificate gallery">
     <div class="certificate-main">
       <button class="certificate-main-btn" type="button" data-certificate="0" aria-label="Lihat sertifikat WordPress dalam ukuran besar">
-        <img id="certificate-main-image" src="assets/certificate-wordpress.webp" alt="Sertifikat Short Class Website Development Pakai WordPress" loading="lazy">
+        <img id="certificate-main-image" src="assets/certificate-wordpress.webp" alt="Sertifikat Short Class Website Development Pakai WordPress" loading="lazy" decoding="async">
         <span class="certificate-zoom">View certificate ↗</span>
       </button>
       <div class="certificate-main-copy">
         <small id="certificate-main-kicker">01 / WEB DEVELOPMENT</small>
         <h3 id="certificate-main-title">Short Class Website Development Pakai WordPress</h3>
-        <p id="certificate-main-desc">Certificate of Appreciation dari kelas singkat Website Development menggunakan WordPress.</p>
+        <p id="certificate-main-desc">Certificate of Appreciation dari Short Class Website Development Pakai WordPress, KarirNex by PT Ebiz Karisma Internasional (31 Agustus 2026).</p>
       </div>
     </div>
     <div class="certificate-list">
       <button class="certificate-card is-active" type="button" data-certificate="0">
-        <img src="assets/certificate-wordpress.webp" alt="Sertifikat WordPress" loading="lazy"><span><small>01</small><b>Website Development — WordPress</b></span><i>↗</i>
+        <img src="assets/certificate-wordpress.webp" alt="Sertifikat WordPress" loading="lazy" decoding="async"><span><small>01</small><b>Website Development — WordPress</b></span><i>↗</i>
       </button>
       <button class="certificate-card" type="button" data-certificate="1">
-        <img src="assets/certificate-dicoding.webp" alt="Sertifikat Dicoding Belajar Dasar Pemrograman Web" loading="lazy"><span><small>02</small><b>Belajar Dasar Pemrograman Web</b></span><i>↗</i>
+        <img src="assets/certificate-dicoding.webp" alt="Sertifikat Dicoding Belajar Dasar Pemrograman Web" loading="lazy" decoding="async"><span><small>02</small><b>Belajar Dasar Pemrograman Web</b></span><i>↗</i>
       </button>
       <button class="certificate-card" type="button" data-certificate="2">
-        <img src="assets/certificate-office.webp" alt="Sertifikat Microsoft Office Specialist Intermediate" loading="lazy"><span><small>03</small><b>Microsoft Office Specialist — Intermediate</b></span><i>↗</i>
+        <img src="assets/certificate-office.webp" alt="Sertifikat Microsoft Office Specialist Intermediate" loading="lazy" decoding="async"><span><small>03</small><b>Microsoft Office Specialist — Intermediate</b></span><i>↗</i>
       </button>
       <button class="certificate-card" type="button" data-certificate="3">
-        <img src="assets/certificate-html-css.webp" alt="Materi kelas HTML dan CSS Dicoding" loading="lazy"><span><small>04</small><b>HTML &amp; CSS — Web Development</b></span><i>↗</i>
+        <img src="assets/certificate-html-css.webp" alt="Materi Dicoding dasar HTML dan CSS" loading="lazy" decoding="async"><span><small>04</small><b>Dasar HTML &amp; CSS — Dicoding</b></span><i>↗</i>
       </button>
     </div>
   </div>
@@ -159,10 +174,10 @@
     <button class="contact-card copy-email" type="button" data-email="muhyidd03@gmail.com"><small>EMAIL</small><b>muhyidd03@gmail.com <span>Copy ↗</span></b></button>
     <a class="contact-card" href="https://github.com/muhyidd03-sudo" target="_blank" rel="noreferrer"><small>GITHUB</small><b>github.com/muhyidd03-sudo <span>Open ↗</span></b></a>
     <a class="contact-card" href="https://www.dicoding.com/users/muhyiddin_03hn8f/academies" target="_blank" rel="noreferrer"><small>DICODING</small><b>Muhyiddin <span>Open ↗</span></b></a>
-    <a class="contact-card" href="http://linkedin.com/in/muhyidd-dev-1b543743a" target="_blank" rel="noreferrer"><small>LINKEDIN</small><b>LinkedIn <span>Open ↗</span></b></a>
+    <a class="contact-card" href="https://www.linkedin.com/in/muhyidd-dev-1b543743a" target="_blank" rel="noreferrer"><small>LINKEDIN</small><b>linkedin.com/in/muhyidd-dev-1b543743a <span>Open ↗</span></b></a>
   </div>
   <div class="contact-note reveal"><span class="status-dot"></span><div><b>Open to learning, collaboration &amp; meaningful projects.</b><small>Untuk saat ini, email adalah cara terbaik untuk menghubungi saya.</small></div></div>
-  <div class="contact-social reveal"><a href="mailto:muhyidd03@gmail.com">Email me <span>↗</span></a><a href="https://github.com/muhyidd03-sudo" target="_blank" rel="noreferrer">GitHub <span>↗</span></a><a href="https://www.dicoding.com/users/muhyiddin_03hn8f/academies" target="_blank" rel="noreferrer">Dicoding <span>↗</span></a></div>
+  <div class="contact-social reveal"><a href="mailto:muhyidd03@gmail.com">Email me <span>↗</span></a><a href="https://github.com/muhyidd03-sudo" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a><a href="https://www.dicoding.com/users/muhyiddin_03hn8f/academies" target="_blank" rel="noopener noreferrer">Dicoding <span>↗</span></a><a href="https://www.linkedin.com/in/muhyidd-dev-1b543743a" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a></div>
  </div>
 </section>
 </main>
@@ -199,7 +214,7 @@
     <button class="certificate-modal-close" type="button" aria-label="Tutup sertifikat">×</button>
     <div class="certificate-modal-top"><small id="certificate-modal-kicker">01 / WEB DEVELOPMENT</small><span id="certificate-modal-count">01 / 04</span></div>
     <h2 id="certificate-modal-title">Short Class Website Development Pakai WordPress</h2>
-    <div class="certificate-modal-media"><img id="certificate-modal-image" src="assets/certificate-wordpress.webp" alt="Sertifikat" /></div>
+    <div class="certificate-modal-media"><img id="certificate-modal-image" src="" alt="Sertifikat" loading="lazy" decoding="async" /></div>
     <div class="certificate-modal-nav"><button type="button" id="certificate-prev" aria-label="Sertifikat sebelumnya">←</button><button type="button" id="certificate-next" aria-label="Sertifikat berikutnya">→</button></div>
   </div>
 </div>
@@ -209,7 +224,7 @@
     <div class="case-progress"><span id="case-progress-bar"></span></div>
     <button class="modal-close" aria-label="Tutup detail project">×</button>
     <div class="modal-topline"><small id="modal-tag"></small><span id="modal-count">01 / 03</span></div>
-    <div class="modal-project-media cinematic-media" id="modal-project-media"><div class="media-shine"></div><img id="modal-project-image" src="" alt=""></div>
+    <div class="modal-project-media cinematic-media" id="modal-project-media"><div class="media-shine"></div><img id="modal-project-image" src="" alt="" loading="lazy" decoding="async"></div>
     <div class="case-kicker"><span>CASE STUDY</span><i></i><span>MUHYIDDIN / 2026</span></div>
     <h2 id="modal-title"></h2>
     <p class="modal-lead" id="modal-desc"></p>
@@ -231,6 +246,6 @@
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
