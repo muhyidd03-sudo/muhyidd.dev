@@ -1217,3 +1217,213 @@ html,body{max-width:100%;overflow-x:clip}
   .art-card:hover,.arrow-link:hover,.mini-card:hover,.certificate-main:hover,.certificate-card:hover,.contact-card:hover,.footer-brand .logo:hover b{transform:none}
   .showcase-card:hover,.showcase-view:hover,.skill-row:hover b,.contact-card:hover b span,.certificate-card:hover i{transform:none}
 }
+
+/* V91.2 CSS CLEANUP — RESTORED REQUIRED STATES */
+.no-link{display:inline-flex;align-items:center;padding:11px 15px;border-radius:999px;background:#eaf1f3;color:#64747b;font-size:11px;font-weight:800}
+.dark-mode .modal-box{color:#eef5f7;background:#172127}
+.dark-mode .modal-box h2,.dark-mode .case-nav-btn{color:#eef5f7}
+.dark-mode .modal-lead,.dark-mode .case-study-grid p{color:#a9b7bc}
+.dark-mode .case-study-grid li{color:#d4e0e3}
+.dark-mode .modal-content-grid,.dark-mode .case-study-grid,.dark-mode .modal-bottom,.dark-mode .case-navigation{border-color:rgba(255,255,255,.12)}
+.dark-mode .modal-close,.dark-mode .case-nav-btn>span{background:#203038;border-color:rgba(255,255,255,.14);color:#eef5f7}
+.dark-mode .modal-actions a{background:#fff;color:#111}
+.dark-mode .no-link{background:#24343b;color:#b9c6ca}
+.dark-mode .modal-project-media{background:#111b20;border-color:rgba(255,255,255,.12)}
+
+/* V91.4 — SMOOTH THEME TRANSITION */
+body,
+.nav-wrap,
+.nav-wrap.scrolled,
+.nav-menu,
+.theme-btn,
+.soft,
+.skill-row,
+.showcase-card,
+.certificate-main,
+.certificate-card,
+.certificate-note,
+.contact-card,
+.contact-note,
+.modal-box,
+.modal-close,
+.site-footer {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: .38s;
+  transition-timing-function: ease;
+}
+
+/* V91.5 — CIRCULAR WIPE DARK MODE
+   Native View Transition reveal keeps the page content visible while the
+   new theme expands from the theme button.
+*/
+::view-transition-group(root){
+  animation:none;
+}
+
+::view-transition-image-pair(root){
+  isolation:isolate;
+}
+
+::view-transition-old(root),
+::view-transition-new(root){
+  animation:none;
+  mix-blend-mode:normal;
+}
+
+/* V91.9 — reverse circular wipe: the current theme contracts into the button. */
+::view-transition-old(root){
+  clip-path:circle(160vmax at var(--theme-x) var(--theme-y));
+  animation:themeCircularWipeIntoButton 1.25s cubic-bezier(.22,.72,.28,1) forwards;
+  z-index:2;
+}
+
+::view-transition-new(root){
+  z-index:1;
+}
+
+@keyframes themeCircularWipeIntoButton{
+  0%{clip-path:circle(160vmax at var(--theme-x) var(--theme-y));}
+  55%{clip-path:circle(92vmax at var(--theme-x) var(--theme-y));}
+  100%{clip-path:circle(0 at var(--theme-x) var(--theme-y));}
+}
+
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-new(root){
+    animation:none;
+    clip-path:none;
+  }
+}
+
+/* V91.3 — DARK MODE RESTORE
+   Restores the global theme layer removed during CSS cleanup.
+*/
+.dark-mode{
+  --ink:#f4f7f8;
+  --paper:#0e1519;
+  --soft:#121c21;
+  --line:rgba(255,255,255,.12);
+  --muted:#9ba8ad;
+}
+.dark-mode .nav-wrap.scrolled{
+  background:rgba(14,21,25,.82);
+  border-bottom-color:rgba(255,255,255,.10);
+  box-shadow:0 8px 28px rgba(0,0,0,.18);
+}
+.dark-mode .theme-btn,
+.dark-mode .logo span{
+  background:#fff;
+  color:#111;
+  border-color:rgba(255,255,255,.15);
+}
+.dark-mode .nav-menu{color:var(--ink)}
+.dark-mode .soft{background:#121c21}
+.dark-mode .skill-row:hover{background:#152026}
+.dark-mode .tags span,
+.dark-mode .modal-tags span,
+.dark-mode .showcase-tags span{background:#24343b;color:#d8e4e7}
+.dark-mode .showcase-card{
+  border-color:rgba(255,255,255,.12);
+  background:#12161c;
+}
+.dark-mode .showcase-info h3,
+.dark-mode .showcase-view,
+.dark-mode .showcase-count span:first-child{color:#f7f8f9}
+.dark-mode .showcase-view{border-color:rgba(255,255,255,.14);background:#1c2930}
+.dark-mode .showcase-tags span:hover{background:#30454d}
+.dark-mode .work-gallery-section{background:var(--paper);color:var(--ink)}
+.dark-mode .certificate-main{
+  background:#172127;
+  border-color:rgba(255,255,255,.10);
+  box-shadow:0 18px 55px rgba(0,0,0,.22);
+}
+.dark-mode .certificate-main-copy h3{color:#f4f7f8}
+.dark-mode .certificate-main-copy p{color:#a9b7bc}
+.dark-mode .certificate-card{
+  background:#172127;
+  border-color:rgba(255,255,255,.10);
+  color:#eef5f7;
+}
+.dark-mode .certificate-card:hover,
+.dark-mode .certificate-card.is-active{
+  background:#1d2b32;
+  border-color:rgba(255,255,255,.18);
+}
+.dark-mode .certificate-card small{color:#9fb0b6}
+.dark-mode .certificate-card b{color:#eef5f7}
+.dark-mode .certificate-card i{background:#24343b;color:#dce8eb}
+.dark-mode .certificate-note{
+  color:#d7e2e5;
+  border-color:rgba(255,255,255,.12);
+}
+.dark-mode .certificate-note b{color:#eef5f7}
+.dark-mode .certificate-note small{color:#a9b7bc}
+.dark-mode .certificate-note > span{color:#8fa3aa}
+.dark-mode .certificate-modal-box{
+  background:#172127;
+  color:#eef5f7;
+}
+.dark-mode .certificate-modal-close,
+.dark-mode .certificate-modal-nav button{
+  background:#203038;
+  color:#eef5f7;
+  border-color:rgba(255,255,255,.14);
+}
+.dark-mode .certificate-modal-top span{color:#9fb0b6}
+.dark-mode .certificate-modal-box h2{color:#f4f7f8}
+.dark-mode .certificate-modal-media{background:#111b20;border-color:rgba(255,255,255,.12)}
+.dark-mode .certificate-modal-media img{background:#111b20}
+.dark-mode .contact-card{
+  color:var(--ink);
+  background:rgba(255,255,255,.04);
+  border-color:rgba(255,255,255,.12);
+}
+.dark-mode .contact-card:hover{background:#1a2a31}
+.dark-mode .contact-note{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.dark-mode .contact-social a{border-color:rgba(255,255,255,.2)}
+.dark-mode .timeline-dot{border-color:var(--soft)}
+.dark-mode .site-footer{background:#080e11}
+.dark-mode .footer-statement,
+.dark-mode .footer-bottom,
+.dark-mode .footer-middle{color:#a0adb2}
+.dark-mode .modal-box{
+  color:#eef5f7;
+  background:#172127;
+}
+.dark-mode .modal-box h2,
+.dark-mode .case-nav-btn{color:#eef5f7}
+.dark-mode .modal-lead,
+.dark-mode .case-study-grid p{color:#a9b7bc}
+.dark-mode .case-study-grid li{color:#d4e0e3}
+.dark-mode .modal-content-grid,
+.dark-mode .case-study-grid,
+.dark-mode .modal-bottom,
+.dark-mode .case-navigation{border-color:rgba(255,255,255,.12)}
+.dark-mode .modal-close,
+.dark-mode .case-nav-btn>span{
+  background:#203038;
+  border-color:rgba(255,255,255,.14);
+  color:#eef5f7;
+}
+.dark-mode .modal-actions a{background:#fff;color:#111}
+.dark-mode .no-link{background:#24343b;color:#b9c6ca}
+.dark-mode .modal-project-media{background:#111b20;border-color:rgba(255,255,255,.12)}
+.dark-mode .menu-btn{background:#fff}
+.dark-mode .menu-btn i{background:#111}
+@media(max-width:700px){
+  .dark-mode .nav-menu{
+    background:rgba(18,27,32,.96);
+    color:#f4f7f8;
+    border-color:rgba(255,255,255,.1);
+  }
+}
+
+/* V91.16 — force Work Gallery motion even when browser reduced-motion is enabled.
+   The original V91 gallery was being collapsed to a near-instant swap by the
+   prefers-reduced-motion rule. Keep the rest of the site's accessibility
+   behavior unchanged; only the requested project carousel keeps its motion. */
+.showcase-carousel .showcase-card{
+  transition:
+    transform 1.25s cubic-bezier(.22,.72,.2,1) !important,
+    opacity 1.25s linear !important;
+  will-change: transform, opacity;
+}

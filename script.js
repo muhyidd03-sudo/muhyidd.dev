@@ -61,9 +61,32 @@ const syncThemeButton = () => {
 };
 syncThemeButton();
 themeBtn?.addEventListener('click',()=>{
-  body.classList.toggle('dark-mode');
-  localStorage.setItem('muhyiddin-theme',body.classList.contains('dark-mode')?'dark':'light');
-  syncThemeButton();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rect = themeBtn.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  const dark = !body.classList.contains('dark-mode');
+  const root = document.documentElement;
+
+  root.style.setProperty('--theme-x', `${x}px`);
+  root.style.setProperty('--theme-y', `${y}px`);
+  root.style.setProperty('--theme-button-size', `${Math.max(rect.width, rect.height)}px`);
+
+  const applyTheme = () => {
+    body.classList.toggle('dark-mode', dark);
+    localStorage.setItem('muhyiddin-theme', dark ? 'dark' : 'light');
+    syncThemeButton();
+  };
+
+  // Use the native View Transition API when available. It lets the circular
+  // reveal contain the complete page snapshot, so text/images stay visible.
+  if (!reduceMotion && typeof document.startViewTransition === 'function') {
+    document.startViewTransition(applyTheme);
+    return;
+  }
+
+  // Graceful fallback for browsers without View Transitions.
+  applyTheme();
 });
 
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
@@ -223,6 +246,7 @@ function moveShowcase(step, fromAuto=false){
      so recycled cards never jump to the wrong side. */
   showcaseCards.forEach(card=>{
     const old=Number(card.dataset.slot);
+    card.style.setProperty('transition','transform 1.25s cubic-bezier(.22,.72,.2,1), opacity 1.25s linear','important');
     setSlot(card,old-direction);
   });
   renderShowcaseCopy(true);
@@ -232,11 +256,11 @@ function moveShowcase(step, fromAuto=false){
     const recycled=showcaseCards.find(card=>Math.abs(Number(card.dataset.slot))>3);
     if(recycled){
       const newSlot=direction>0 ? 3 : -3;
-      recycled.style.transition='none';
+      recycled.style.setProperty('transition','none','important');
       setCardProject(recycled,projectForSlot(newSlot));
       setSlot(recycled,newSlot);
       void recycled.offsetWidth;
-      recycled.style.transition='';
+      recycled.style.removeProperty('transition');
     }
     showcaseBusy=false;
   },1380);
