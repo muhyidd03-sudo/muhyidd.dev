@@ -1491,3 +1491,127 @@ html, body{max-width:100%;overflow-x:clip}
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   V91 — FINAL VISUAL POLISH
+   Refines depth, rhythm, hover states, and small-screen touch
+   targets without changing the established layout or content.
+========================================================= */
+:root{
+  --shadow-soft:0 18px 55px rgba(20,42,52,.08);
+  --shadow-hover:0 28px 70px rgba(20,42,52,.13);
+}
+
+/* Global rhythm + tactile details */
+.section-head small,
+.work-gallery-count,
+.certificate-main-kicker,
+.timeline-meta small{
+  font-weight:700;
+}
+
+.arrow-link,
+.contact-social a,
+.footer-cta>a,
+.footer-backtop,
+.nav-item{
+  transition:color .25s ease,opacity .25s ease,transform .3s var(--ease),border-color .25s ease;
+}
+
+.arrow-link:hover{transform:translateX(4px)}
+.arrow-link span{display:inline-block;transition:transform .3s var(--ease)}
+.arrow-link:hover span{transform:translate(3px,-3px)}
+
+/* Navigation feels lighter after scrolling */
+.nav-wrap.scrolled .logo b{transform:translateY(-1px)}
+.nav-wrap.scrolled .theme-btn{box-shadow:0 8px 24px rgba(15,25,30,.07)}
+
+/* Hero card: a little more premium depth */
+.art-card{box-shadow:0 35px 90px rgba(0,70,100,.22),inset 0 1px 0 rgba(255,255,255,.18)}
+.art-card:hover{transform:translateY(-5px)}
+.chip{transition:transform .35s var(--ease),box-shadow .35s ease}
+.art-card:hover .chip-1{transform:translate(3px,-3px)}
+.art-card:hover .chip-2{transform:translate(-3px,3px)}
+
+/* Section headings get a quieter supporting line */
+.section-head h2,.cta h2{position:relative}
+.section-head h2 em,.cta h2 em{display:inline-block}
+
+/* About cards */
+.mini-card{transition:padding .35s var(--ease),background .35s ease,border-color .35s ease}
+.mini-card:hover{padding-left:10px;padding-right:10px;background:rgba(19,157,204,.025);border-top-color:rgba(19,157,204,.28)}
+.mini-card h3{transition:color .25s ease}
+.mini-card:hover h3{color:#139dcc}
+
+/* Skills: clearer interaction without changing the list */
+.skill-row{border-radius:14px;transition:padding .35s var(--ease),background .35s ease,box-shadow .35s ease}
+.skill-row:hover{box-shadow:inset 3px 0 0 #139dcc}
+.skill-row b{transition:transform .3s var(--ease),color .25s ease}
+.skill-row:hover b{transform:translate(3px,-3px);color:#139dcc}
+
+/* Work gallery */
+.showcase-carousel{isolation:isolate}
+.showcase-card{transition:transform 1.25s var(--ease),opacity 1.25s ease,filter 1.25s ease,box-shadow .35s ease}
+.showcase-card:focus-visible{outline:3px solid #139dcc;outline-offset:6px}
+.showcase-card:hover{filter:brightness(1.02);box-shadow:0 22px 50px rgba(20,42,52,.12)}
+.showcase-view{transition:transform .3s var(--ease),background .3s ease,color .3s ease,border-color .3s ease,box-shadow .3s ease}
+.showcase-view:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(20,42,52,.1)}
+.showcase-tags span{transition:transform .25s var(--ease),background .25s ease}
+.showcase-tags span:hover{transform:translateY(-2px);background:#e8f8fc}
+
+/* Certificate gallery */
+.certificate-main{box-shadow:var(--shadow-soft);transition:transform .45s var(--ease),box-shadow .45s ease}
+.certificate-main:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.certificate-card{transition:transform .35s var(--ease),background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.certificate-card:hover{transform:translateX(4px)}
+.certificate-card i{transition:transform .3s var(--ease),background .3s ease,color .3s ease}
+.certificate-card:hover i{transform:translate(2px,-2px)}
+.certificate-zoom{transition:transform .3s var(--ease),opacity .3s ease}
+.certificate-main-btn:hover .certificate-zoom{transform:translateY(-2px)}
+
+/* Contact cards */
+.contact-card{transition:transform .35s var(--ease),border-color .3s ease,background .3s ease}
+.contact-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.55)!important;background:rgba(255,255,255,.045)}
+.contact-card b span{display:inline-block;transition:transform .3s var(--ease),color .25s ease}
+.contact-card:hover b span{transform:translate(3px,-2px);color:#8ce6f8}
+.contact-social a:hover{transform:translateY(-2px);color:#8ce6f8}
+
+/* Modal */
+.modal-close,.case-navigation button,.certificate-modal-close,.certificate-modal-nav button{transition:transform .3s var(--ease),background .3s ease,border-color .3s ease,color .3s ease}
+.modal-close:hover,.certificate-modal-close:hover{transform:rotate(8deg)}
+.case-navigation button:hover,.certificate-modal-nav button:hover{transform:translateY(-2px)}
+
+/* Footer */
+.footer-brand .logo b{transition:color .25s ease,transform .3s var(--ease)}
+.footer-brand .logo:hover b{color:#72dbf3;transform:translateY(-1px)}
+
+/* Dark mode polish */
+.dark-mode .mini-card:hover{background:rgba(19,157,204,.055)}
+.dark-mode .skill-row:hover{box-shadow:inset 3px 0 0 #139dcc}
+.dark-mode .showcase-card:hover{box-shadow:0 22px 50px rgba(0,0,0,.25)}
+.dark-mode .certificate-main{box-shadow:0 22px 55px rgba(0,0,0,.2)}
+.dark-mode .showcase-tags span:hover{background:#20343b}
+
+/* Touch targets and compact mobile polish */
+@media(max-width:700px){
+  .nav-item{min-height:42px;display:inline-flex;align-items:center}
+  .theme-btn{min-width:40px;min-height:40px}
+  .section-head h2,.cta h2{letter-spacing:-.055em}
+  .about-lead>p{line-height:1.18}
+  .mini-card:hover{padding-left:6px;padding-right:6px}
+  .certificate-card:hover{transform:none}
+  .contact-card:hover{transform:none}
+  .showcase-card:hover{box-shadow:none;filter:none}
+  .showcase-view{box-shadow:none}
+}
+
+@media(max-width:420px){
+  .section-head{margin-bottom:42px}
+  .pill{padding-left:18px;padding-right:18px}
+  .hero-bottom{font-size:9px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .art-card:hover,.arrow-link:hover,.mini-card:hover,.certificate-main:hover,.certificate-card:hover,.contact-card:hover,.footer-brand .logo:hover b{transform:none}
+  .showcase-card:hover,.showcase-view:hover,.skill-row:hover b,.contact-card:hover b span,.certificate-card:hover i{transform:none}
+}
