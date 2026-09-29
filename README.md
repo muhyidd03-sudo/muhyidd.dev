@@ -14,3 +14,6 @@ V91 is a final visual polish pass. It keeps the established V62/V90 design direc
 - Preserved browser title: **muhyidd.dev**.
 - Preserved the V90 blank favicon fix; no photo favicon is included.
 - No new libraries or external JavaScript dependencies.
+
+
+V91.2 — Smooth Section Scroll Fix: internal navigation now targets each section's content container so headings appear directly below the fixed navbar without the previous large blank offset.

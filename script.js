@@ -19,12 +19,19 @@ navItems.forEach(a=>a.addEventListener('click',()=>{
   navMenu?.classList.remove('open');
 }));
 
-// V19: make all internal anchor buttons/links scroll reliably on every device.
+// V19/V91.2: scroll to the actual section content, not the section's outer padding.
+// This keeps headings visible directly below the fixed navbar instead of leaving
+// a large blank area at the top when navigating between sections.
 const scrollToSection = (id, updateUrl = true) => {
   const target = document.getElementById(id);
   if (!target) return false;
+
+  const content = target.querySelector(':scope > .section-inner');
+  const scrollTarget = content || target;
   const navHeight = navWrap?.getBoundingClientRect().height || 0;
-  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - navHeight - 12);
+  const gap = 14;
+  const top = Math.max(0, scrollTarget.getBoundingClientRect().top + window.scrollY - navHeight - gap);
+
   window.scrollTo({ top, behavior: 'smooth' });
   if (updateUrl) history.replaceState(null, '', `#${id}`);
   return true;
@@ -99,10 +106,11 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
 const data={
  pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA yang saya bangun untuk membuat proses penjualan kitab, pengelolaan stok, dan pencatatan transaksi lebih terstruktur.',overview:'Project ini berangkat dari kebutuhan membuat proses kasir toko kitab lebih terstruktur, mulai dari pemilihan pembeli, keranjang transaksi, hingga pencatatan stok.',built:'Saya membuat alur kasir yang lebih praktis: kitab dapat dimuat berdasarkan kelas santri, item bisa diedit atau ditambah, stok divalidasi, transaksi dicatat, dan piutang dapat dilacak.',role:'Merancang alur kasir, struktur workbook, interaksi VBA, validasi transaksi, dan struktur database di dalam workbook.',image:'assets/kasir-screenshot.webp',alt:'Screenshot asli Sistem Kasir Toko Kitab Pondok',highlights:['Keranjang transaksi dengan Qty yang bisa diedit','Daftar kitab otomatis berdasarkan kelas','Tambah dan hapus kitab dari keranjang','Validasi stok dan mutasi stok','Pencatatan piutang dan pembayaran','Struktur data transaksi dan detail transaksi'],tags:['Excel VBA','POS','Inventory','Database'],links:[]},
  portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Website portfolio pribadi untuk memperkenalkan diri, menampilkan project, dan mendokumentasikan perjalanan belajar web development.',overview:'Portfolio ini saya bangun sebagai project nyata untuk menerapkan HTML, CSS, dan JavaScript sekaligus belajar merancang pengalaman pengguna yang rapi dan interaktif.',built:'Website ini dibuat dengan HTML, CSS, dan JavaScript tanpa framework. Fokusnya pada typography, responsive layout, animasi halus, dark mode, dan interaksi yang tetap nyaman digunakan.',role:'Mengerjakan struktur UI, responsive styling, interaction, animation, dan pengembangan halaman dari konsep hingga implementasi.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot asli Personal Portfolio Muhyiddin',highlights:['Semantic HTML dan struktur section yang jelas','Responsive desktop, tablet, dan mobile','Dark mode dengan localStorage','Scroll reveal dan micro-interaction','Project showcase dan detail modal','Accessible focus dan reduced-motion support'],tags:['HTML','CSS','JavaScript','Responsive'],links:[{label:'GitHub',href:'https://github.com/muhyidd03-sudo'}]},
- dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan dari pembelajaran Dicoding untuk memperkuat dasar semantic HTML, CSS, layout responsive, dan penyusunan halaman web.',overview:'Project ini dibuat sebagai bagian dari proses belajar web development, dengan fokus pada semantic HTML, layout CSS, navigasi, dan tampilan yang responsif.',built:'Project ini saya gunakan untuk memperkuat fondasi frontend melalui tugas dan latihan yang langsung diterapkan dan diuji di browser.',role:'Mengerjakan struktur halaman, styling, responsive layout, dan pengembangan bertahap mengikuti kebutuhan tugas.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot asli project web Dicoding Muhyiddin',highlights:['Semantic HTML','Flexbox dan responsive layout','Typography dan spacing','Navigasi halaman yang terstruktur','Pengembangan bertahap melalui latihan'],tags:['HTML','CSS','Dicoding'],links:[{label:'Profil Dicoding',href:'https://www.dicoding.com/users/muhyiddin_03hn8f/academies'}]}
+ dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan dari pembelajaran Dicoding untuk memperkuat dasar semantic HTML, CSS, layout responsive, dan penyusunan halaman web.',overview:'Project ini dibuat sebagai bagian dari proses belajar web development, dengan fokus pada semantic HTML, layout CSS, navigasi, dan tampilan yang responsif.',built:'Project ini saya gunakan untuk memperkuat fondasi frontend melalui tugas dan latihan yang langsung diterapkan dan diuji di browser.',role:'Mengerjakan struktur halaman, styling, responsive layout, dan pengembangan bertahap mengikuti kebutuhan tugas.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot asli project web Dicoding Muhyiddin',highlights:['Semantic HTML','Flexbox dan responsive layout','Typography dan spacing','Navigasi halaman yang terstruktur','Pengembangan bertahap melalui latihan'],tags:['HTML','CSS','Dicoding'],links:[{label:'Profil Dicoding',href:'https://www.dicoding.com/users/muhyiddin_03hn8f/academies'}]},
+ dataart:{tag:'04 / WEB',title:'Data&Art Website',desc:'Website Data&Art dengan fokus pada tampilan visual, layout responsive, dan penyusunan halaman web.',overview:'Project ini menambah pengalaman saya dalam menyusun halaman web dengan struktur visual yang jelas dan tampilan yang nyaman dilihat.',built:'Saya mengembangkan tampilan halaman dengan memperhatikan susunan konten, spacing, komponen antarmuka, dan responsive layout.',role:'Mengerjakan penyusunan layout, styling, struktur halaman, dan penyesuaian tampilan agar tetap rapi di berbagai ukuran layar.',image:'assets/dataart-screenshot.webp',alt:'Screenshot asli Data&Art Website',highlights:['Struktur halaman yang terorganisir','Layout responsive','Penyusunan komponen antarmuka','Typography dan spacing','Visual website yang rapi'],tags:['HTML','CSS','Responsive'],links:[]}
 };
 
-/* V28 SELECTED WORK — reference-style continuous stacked slider */
+/* SELECTED WORK — continuous stacked slider */
 const showcaseTrack = document.querySelector('#showcase-track');
 const showcaseTag = document.querySelector('#showcase-tag');
 const showcaseTitle = document.querySelector('#showcase-title');
@@ -110,7 +118,7 @@ const showcaseDesc = document.querySelector('#showcase-desc');
 const showcaseTags = document.querySelector('#showcase-tags');
 const showcaseView = document.querySelector('.showcase-view');
 const showcaseCurrent = document.querySelector('#showcase-current');
-const showcaseOrder = ['pos','portfolio','dicoding'];
+const showcaseOrder = ['pos','portfolio','dicoding','dataart'];
 let showcaseProject = 0;
 let showcaseBusy = false;
 let showcaseCards = [];
@@ -119,7 +127,8 @@ let showcaseTimer = null;
 const showcaseCopy = {
   pos:{tag:'01 / SYSTEM',title:'Sistem Kasir Toko Kitab Pondok',desc:'Sistem kasir berbasis Excel VBA untuk mengelola transaksi, stok, kitab per kelas, piutang, pembayaran, dan laporan.',image:'assets/kasir-screenshot.webp',alt:'Screenshot Sistem Kasir Toko Kitab Pondok',tags:['VBA','Excel','Database']},
   portfolio:{tag:'02 / WEB',title:'Personal Portfolio',desc:'Portfolio responsive dengan visual minimal, animasi halus, dark mode, dan interaksi modern.',image:'assets/portfolio-screenshot.webp',alt:'Screenshot Personal Portfolio Muhyiddin',tags:['HTML','CSS','JavaScript']},
-  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan Dicoding yang berfokus pada semantic HTML, CSS layout, dan responsive design.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot Dicoding Web Project Muhyiddin',tags:['HTML','CSS']}
+  dicoding:{tag:'03 / LEARNING',title:'Dicoding Web Project',desc:'Project latihan Dicoding yang berfokus pada semantic HTML, CSS layout, dan responsive design.',image:'assets/dicoding-screenshot.webp',alt:'Screenshot Dicoding Web Project Muhyiddin',tags:['HTML','CSS']},
+  dataart:{tag:'04 / WEB',title:'Data&Art Website',desc:'Website Data&Art dengan fokus pada tampilan visual, layout responsive, dan penyusunan halaman web.',image:'assets/dataart-screenshot.webp',alt:'Screenshot Data&Art Website',tags:['HTML','CSS','Responsive']}
 };
 
 function modIndex(n){ return (n + showcaseOrder.length) % showcaseOrder.length; }
@@ -253,7 +262,7 @@ const media=document.querySelector('#modal-project-media'),mediaImg=document.que
 const overview=document.querySelector('#modal-overview'),built=document.querySelector('#modal-built'),role=document.querySelector('#modal-role');
 const highlights=document.querySelector('#modal-highlights'),tags=document.querySelector('#modal-tags'),actions=document.querySelector('#modal-actions'),count=document.querySelector('#modal-count');
 let lastFocus=null;
-const projectOrder=['pos','portfolio','dicoding'];
+const projectOrder=['pos','portfolio','dicoding','dataart'];
 const progressBar=document.querySelector('#case-progress-bar');
 const prevBtn=document.querySelector('#case-prev');
 const nextBtn=document.querySelector('#case-next');
@@ -270,7 +279,7 @@ function openModal(key, direction='none'){
   overview.textContent=d.overview; built.textContent=d.built; role.textContent=d.role;
   highlights.innerHTML=d.highlights.map(x=>`<li>${x}</li>`).join('');
   tags.innerHTML=d.tags.map(x=>`<span>${x}</span>`).join('');
-  count.textContent=String(index+1).padStart(2,'0')+' / 03';
+  count.textContent=String(index+1).padStart(2,'0')+' / 04';
   navIndex.textContent=String(index+1).padStart(2,'0');
   progressBar.style.width=`${((index+1)/projectOrder.length)*100}%`;
   mediaImg.classList.remove('is-loading');
