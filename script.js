@@ -56,8 +56,11 @@ const savedTheme=localStorage.getItem('muhyiddin-theme');
 if(savedTheme==='dark') body.classList.add('dark-mode');
 const syncThemeButton = () => {
   const dark = body.classList.contains('dark-mode');
-  themeBtn?.setAttribute('aria-pressed', String(dark));
-  themeBtn?.setAttribute('aria-label', dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+  if(themeBtn){
+    themeBtn.classList.toggle('is-dark', dark);
+    themeBtn.setAttribute('aria-pressed', String(dark));
+    themeBtn.setAttribute('aria-label', dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+  }
 };
 syncThemeButton();
 themeBtn?.addEventListener('click',()=>{
@@ -339,10 +342,6 @@ addEventListener('keydown',e=>{
   if(e.key==='Escape')closeModal();
   if(e.key==='ArrowLeft')cycleProject(-1);
   if(e.key==='ArrowRight')cycleProject(1);
-});
-
-addEventListener('keydown',e=>{
-  if(modal.classList.contains('open')) return;
 });
 
 // Smooth, subtle hero motion.
