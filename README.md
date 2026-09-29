@@ -17,3 +17,10 @@ V91 is a final visual polish pass. It keeps the established V62/V90 design direc
 
 
 V91.2 — Smooth Section Scroll Fix: internal navigation now targets each section's content container so headings appear directly below the fixed navbar without the previous large blank offset.
+
+
+## V91.2 CSS Cleanup
+- Removed unused CSS from older project/showcase experiments that are no longer part of the current V91.2 layout.
+- Removed obsolete Work Gallery generations and unused project-card styles.
+- Kept the current V91.2 Work Gallery, Certificates, modal, responsive rules, dark mode, and accessibility styling intact.
+- Reduced `style.css` from about 86 KB to about 72 KB without changing the intended visual design.
