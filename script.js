@@ -142,7 +142,6 @@ const showcaseTag = document.querySelector('#showcase-tag');
 const showcaseTitle = document.querySelector('#showcase-title');
 const showcaseDesc = document.querySelector('#showcase-desc');
 const showcaseTags = document.querySelector('#showcase-tags');
-const showcaseView = document.querySelector('.showcase-view');
 const showcaseCurrent = document.querySelector('#showcase-current');
 const showcaseOrder = ['pos','portfolio','dicoding','dataart'];
 let showcaseProject = 0;
@@ -160,10 +159,6 @@ const showcaseCopy = {
 function modIndex(n){ return (n + showcaseOrder.length) % showcaseOrder.length; }
 function projectForSlot(slot){ return showcaseOrder[modIndex(showcaseProject + slot)]; }
 
-/* Five visual slots, exactly like the reference animation:
-   far-left -> near-left -> center -> near-right -> far-right.
-   We reuse the user's 3 real projects rather than inventing extra projects. */
-const slotNames = ['far-left','near-left','center','near-right','far-right'];
 const slotClassMap = {
   '-4':'showcase-pos-off-left',
   '-3':'showcase-pos-off-left',
@@ -239,7 +234,7 @@ function openProjectFromShowcase(key){
   if(target) target.click();
   else if(typeof openModal==='function') openModal(key);
 }
-function moveShowcase(step, fromAuto=false){
+function moveShowcase(step){
   if(showcaseBusy || !showcaseTrack)return;
   const direction=step>0?1:-1;
   showcaseBusy=true;
@@ -285,7 +280,7 @@ const modalBox=document.querySelector('.modal-box');
 const modalBg=document.querySelector('.modal-bg');
 const closeBtn=document.querySelector('.modal-close');
 const tag=document.querySelector('#modal-tag'),title=document.querySelector('#modal-title'),desc=document.querySelector('#modal-desc');
-const media=document.querySelector('#modal-project-media'),mediaImg=document.querySelector('#modal-project-image');
+const mediaImg=document.querySelector('#modal-project-image');
 const overview=document.querySelector('#modal-overview'),built=document.querySelector('#modal-built'),role=document.querySelector('#modal-role');
 const highlights=document.querySelector('#modal-highlights'),tags=document.querySelector('#modal-tags'),actions=document.querySelector('#modal-actions'),count=document.querySelector('#modal-count');
 let lastFocus=null;
@@ -297,7 +292,7 @@ const prevLabel=document.querySelector('#case-prev-label');
 const nextLabel=document.querySelector('#case-next-label');
 const navIndex=document.querySelector('#case-nav-index');
 let currentProject='pos';
-function openModal(key, direction='none'){
+function openModal(key){
   const d=data[key]; if(!d)return;
   currentProject=key;
   lastFocus=document.activeElement;
