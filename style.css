@@ -1502,8 +1502,23 @@ body,
    The toggle stays beside the hamburger instead of becoming part of the opened menu.
    Its position is therefore consistent, which also keeps the circular-wipe origin consistent.
 */
+/* V91.29 — navbar alignment fix
+   Desktop: keep the nav links grouped on the right, between the brand and theme toggle.
+   Mobile: keep brand left, theme toggle + hamburger right, and menu as a compact dropdown. */
+@media(min-width:701px){
+  .nav-menu{margin-left:auto;margin-right:18px;}
+}
 @media(max-width:700px){
   .nav{position:relative;}
+  .nav .menu-btn{
+    display:flex;
+    position:absolute;
+    top:0;
+    right:0;
+    width:40px;
+    height:40px;
+    z-index:61;
+  }
   .nav .theme-btn{
     position:absolute;
     top:0;
@@ -1512,7 +1527,6 @@ body,
     height:40px;
     z-index:60;
   }
-  .nav .menu-btn{position:relative;z-index:61;}
   .nav-menu{top:65px;}
 }
 
